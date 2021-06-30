@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.aotter.trek.android.kotlin.demo">
+    package="com.aotter.trek.demo">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Aottertrekandroidkotlindemo">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.aotter.trek.android.kotlin.demo.trek.banner_ad.TrekBannerAdScrollPageActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-8836593984677243~2250388465" />
+
+        <activity android:name="com.aotter.trek.android.kotlin.demo.trek.supr_ad.TrekMediaRecyclerViewPageActivity" />
+        <activity android:name="com.aotter.trek.android.kotlin.demo.trek.supr_ad.TrekMediaScrollPageActivity" />
+        <activity android:name="com.aotter.trek.android.kotlin.demo.trek.native_ad.TrekNativeAdScrollPageActivity" />
+        <activity android:name="com.aotter.trek.android.kotlin.demo.trek.native_ad.TrekNativeAdRecyclerViewPageActivity" />
+        <activity android:name="com.aotter.trek.android.kotlin.demo.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
