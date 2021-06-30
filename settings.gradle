@@ -1,0 +1,2 @@
+rootProject.name = "aotter-trek-android-kotlin-demo"
+include ':app'
