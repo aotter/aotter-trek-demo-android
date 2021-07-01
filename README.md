@@ -9,7 +9,6 @@ https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-s
 
 ## Update
 - 2021/07/01 
-    -add native ad sample code 
-    -add supr.Ad  sample code 
-    -add banner ad sample code 
-
+    - add Native Ad sample code 
+    - add Supr.Ad sample code
+    - add Banner Ad sample code
