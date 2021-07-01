@@ -12,12 +12,12 @@ https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-s
     - Native ad mapper optimization
     - Modify get ad id method
 - 2021/06/16 release - SDK `4.0.0`
-    - new released Android SDK
+    - New released Android SDK
 
 ## Demo release change log
 - 2021/07/01 
-    - add Native Ad sample code 
-    - add Supr.Ad sample code
-    - add Banner Ad sample code
+    - Add Native Ad sample code 
+    - Add Supr.Ad sample code
+    - Add Banner Ad sample code
 
 
