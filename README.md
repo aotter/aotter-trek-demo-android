@@ -11,7 +11,7 @@ https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-s
 - 2021/06/16 release - SDK `4.0.3`
     - Native ad mapper optimization
     - Modify get ad id method
-- 2021/06/16 release - SDK `4.0.0`
+- 2021/06/15 release - SDK `4.0.0`
     - New released Android SDK
 
 ## Demo release change log
