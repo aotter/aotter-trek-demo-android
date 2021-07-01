@@ -1,5 +1,5 @@
 # aotter-trek-android-kotlin-demo
-Trek SDK example app demo
+Trek SDK Example App Demo
 
 ## Trek SDK Document
 https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-sdk
