@@ -6,13 +6,17 @@ plugins {
 android {
     compileSdkVersion 30
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId "com.aotter.trek.android.kotlin.demo"
         minSdkVersion 28
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -32,6 +36,15 @@ android {
 }
 
 dependencies {
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.aotter.net:trek-sdk-android-kotlin:4.1.2'
+
+    //multidex
+    implementation "androidx.multidex:multidex:2.0.1"
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.5.0'
