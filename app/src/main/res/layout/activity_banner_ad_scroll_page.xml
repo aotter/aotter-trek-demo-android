@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aotter.trek.android.kotlin.demo.trek.banner_ad.TrekBannerAdScrollPageActivity">
+    tools:context=".trek.banner_ad.TrekBannerAdScrollPageActivity">
 
     <com.aotter.net.trek.ads.TrekMediaView
         android:id="@+id/trekMediationView"

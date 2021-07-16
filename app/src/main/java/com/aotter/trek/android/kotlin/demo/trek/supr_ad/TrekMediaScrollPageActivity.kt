@@ -1,5 +1,6 @@
 package com.aotter.trek.android.kotlin.demo.trek.supr_ad
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,6 +9,7 @@ import com.aotter.net.dto.mftc.response.AdData
 import com.aotter.net.trek.AotterTrek
 import com.aotter.net.trek.ads.TrekAd
 import com.aotter.net.trek.ads.TrekAdStatusCallBack
+import com.aotter.trek.android.kotlin.demo.trek.CoverPageActivity
 import com.aotter.trek.demo.databinding.ActivityVastScrollPageBinding
 
 class TrekMediaScrollPageActivity : AppCompatActivity() {
@@ -51,6 +53,14 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
 
             trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").setCategory("news")
                 .applyTrekAd()
+
+        }
+
+        viewBinding.coverpageBtn.setOnClickListener {
+
+            val intent = Intent()
+            intent.setClass(this, CoverPageActivity::class.java)
+            startActivity(intent)
 
         }
 

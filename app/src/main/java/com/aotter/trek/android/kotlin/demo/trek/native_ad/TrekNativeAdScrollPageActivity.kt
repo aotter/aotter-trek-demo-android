@@ -165,7 +165,7 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
             jsonObject,
         )
 
-        val user = User("1991/10/10", "a1111111@gmail.com", "", "M", JsonObject(), "0900000000")
+        val user = User("1991/10/10", "a1111111@gmail.com", "", "M", "0900000000", JsonObject())
 
         tracker
             .timeSpan(1)
