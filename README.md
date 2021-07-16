@@ -5,6 +5,9 @@ Trek SDK Example App Demo
 https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-sdk
 
 ## Trek SDK release change log
+- 2021/07/16 release - SDK `4.2.0`
+    - Optimize adData
+    - Adjust TrekMediaView lifecycle
 - 2021/06/28 release - SDK `4.1.1`
     - Fix video ad grab external sound source
     - Fix supr.Ad click response issue
