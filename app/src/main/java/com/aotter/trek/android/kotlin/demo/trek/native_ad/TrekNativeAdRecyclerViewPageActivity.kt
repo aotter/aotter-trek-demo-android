@@ -1,4 +1,4 @@
-package com.aotter.trek.android.kotlin.demo.trek.native_ad
+package com.aotter.trek.demo.trek.native_ad
 
 import android.os.Bundle
 import android.util.Log
@@ -14,9 +14,9 @@ import com.aotter.net.trek.ads.TrekAd
 import com.aotter.net.trek.ads.TrekAdStatusCallBack
 import com.aotter.net.trek.annomation.EntityType
 import com.aotter.net.trek.sealed.ActionType
-import com.aotter.trek.android.kotlin.demo.LocalNativeAdData
-import com.aotter.trek.android.kotlin.demo.trek.NativeAdAdapter
 import com.aotter.trek.demo.databinding.ActivityNativeAdRecyclerviewPageBinding
+import com.aotter.trek.demo.trek.LocalNativeAdData
+import com.aotter.trek.demo.trek.NativeAdAdapter
 import com.google.gson.JsonObject
 
 class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
@@ -53,7 +53,6 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
         trekAd2 = AotterTrek.trekService(this)
 
         getAd()
-        getAd2()
 
     }
 
@@ -61,8 +60,8 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
     private fun initView() {
 
         viewBinding.refreshBtn.setOnClickListener {
-            getAd()
-            getAd2()
+            trekAd.setPlaceUid("45419fb5-a846-4c4a-837f-3b391ec7b45a").setCategory("news")
+                .applyTrekAd()
         }
 
 
@@ -96,23 +95,34 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
         trekAd.setTrekAdStatusListener(object : TrekAdStatusCallBack {
             override fun onAdError(message: String) {
                 Log.e("onAdError", message)
+
+                getAd2()
             }
 
             override fun onAdLoaded(adData: AdData) {
 
-                list[1] =
-                    LocalNativeAdData(adData.title, adData.advertiserName, adData.imgIcon, true)
+                list[1].trekAd?.let {
+                    list[1] = LocalNativeAdData(
+                        adData.title,
+                        adData.advertiserName,
+                        adData.imgIcon,
+                        trekAd,
+                        adData
+                    )
+                } ?: kotlin.run {
+                    list.add(
+                        1,
+                        LocalNativeAdData(
+                            adData.title,
+                            adData.advertiserName,
+                            adData.imgIcon,
+                            trekAd,
+                            adData
+                        )
+                    )
+                }
 
-                nativeAdAdapter.setOnAdViewRegisteredListener(object :
-                    OnNativeAdViewRegisteredListener {
-
-                    override fun onAdViewRegistered(view: View) {
-                        trekAd.registerNativeAd(view.context, view, adData)
-                    }
-
-                })
-
-                nativeAdAdapter.update(list)
+                getAd2()
 
                 Log.e("onAdLoaded", "onAdLoaded")
 
@@ -138,22 +148,31 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
         trekAd2.setTrekAdStatusListener(object : TrekAdStatusCallBack {
             override fun onAdError(message: String) {
                 Log.e("onAdError", message)
+                nativeAdAdapter.update(list)
             }
 
             override fun onAdLoaded(adData: AdData) {
 
-
-                list[list.size - 2] =
-                    LocalNativeAdData(adData.title, adData.advertiserName, adData.imgIcon, true)
-
-                nativeAdAdapter.setOnAdViewRegisteredListener(object :
-                    OnNativeAdViewRegisteredListener {
-
-                    override fun onAdViewRegistered(view: View) {
-                        trekAd2.registerNativeAd(view.context, view, adData)
-                    }
-
-                })
+                list[8].trekAd?.let {
+                    list[8] = LocalNativeAdData(
+                        adData.title,
+                        adData.advertiserName,
+                        adData.imgIcon,
+                        trekAd2,
+                        adData
+                    )
+                } ?: kotlin.run {
+                    list.add(
+                        8,
+                        LocalNativeAdData(
+                            adData.title,
+                            adData.advertiserName,
+                            adData.imgIcon,
+                            trekAd2,
+                            adData
+                        )
+                    )
+                }
 
                 nativeAdAdapter.update(list)
 

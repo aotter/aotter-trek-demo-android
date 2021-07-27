@@ -1,4 +1,4 @@
-package com.aotter.trek.android.kotlin.demo.trek
+package com.aotter.trek.demo.trek
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.aotter.trek.android.kotlin.demo.LocalNativeAdData
-import com.aotter.trek.android.kotlin.demo.trek.native_ad.OnNativeAdViewRegisteredListener
 import com.aotter.trek.demo.R
+import com.aotter.trek.demo.trek.native_ad.OnNativeAdViewRegisteredListener
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
@@ -33,11 +32,13 @@ class NativeAdAdapter() : RecyclerView.Adapter<NativeAdAdapter.ViewHolder>() {
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (list[position].isAd) {
+
+        return list[position].trekAd?.let {
             0
-        } else {
+        } ?: kotlin.run {
             1
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -80,8 +81,10 @@ class NativeAdAdapter() : RecyclerView.Adapter<NativeAdAdapter.ViewHolder>() {
 
         fun bind(item: LocalNativeAdData) {
 
-            if (item.isAd) {
-                onNativeAdViewRegisteredListener?.onAdViewRegistered(itemView)
+            item.trekAd?.let { trekAd ->
+                item.adData?.let { adData ->
+                    trekAd.registerNativeAd(itemView.context, itemView, adData)
+                }
             }
 
             advertiser.text = item.advertiser

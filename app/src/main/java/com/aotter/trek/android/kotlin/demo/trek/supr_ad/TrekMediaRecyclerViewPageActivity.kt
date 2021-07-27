@@ -1,4 +1,4 @@
-package com.aotter.trek.android.kotlin.demo.trek.supr_ad
+package com.aotter.trek.demo.trek.supr_ad
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,11 +10,10 @@ import com.aotter.net.dto.mftc.response.AdData
 import com.aotter.net.trek.AotterTrek
 import com.aotter.net.trek.ads.TrekAd
 import com.aotter.net.trek.ads.TrekAdStatusCallBack
-import com.aotter.net.trek.ads.TrekMediaView
-import com.aotter.trek.android.kotlin.demo.trek.CoverPageActivity
-import com.aotter.trek.android.kotlin.demo.trek.LocalSuprAdData
-import com.aotter.trek.android.kotlin.demo.trek.SuprAdAdapter
 import com.aotter.trek.demo.databinding.ActivityVastRecyclerViewPageBinding
+import com.aotter.trek.demo.trek.CoverPageActivity
+import com.aotter.trek.demo.trek.LocalSuprAdData
+import com.aotter.trek.demo.trek.SuprAdAdapter
 
 class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
 
@@ -48,7 +47,6 @@ class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
         initView()
 
         getAd()
-        getAd2()
 
     }
 
@@ -98,31 +96,22 @@ class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
         trekAd.setTrekAdStatusListener(object : TrekAdStatusCallBack {
             override fun onAdError(message: String) {
                 Log.e("onAdError", message)
+
+                getAd2()
             }
 
             override fun onAdLoaded(adData: AdData) {
 
-                list[1] = LocalSuprAdData(
-                    "春夏流浪風情，讓你的波希米亞風格再晉級",
-                    "http://pnn.aotter.net/Media/show/b87f68b6-8add-428f-b119-52e49c4e68b4.jpg",
-                    true
-                )
+                list[1].trekAd?.let {
+                    list[1] = LocalSuprAdData(adData.title, adData.advertiserName, trekAd, adData)
+                } ?: kotlin.run {
+                    list.add(
+                        1,
+                        LocalSuprAdData(adData.title, adData.advertiserName, trekAd, adData)
+                    )
+                }
 
-                suprAdAdapter.setOnSuprAdViewRegisteredListener(object :
-                    OnSuprAdViewRegisteredListener {
-                    override fun onAdViewRegistered(
-                        trekMediaView: TrekMediaView
-                    ) {
-                        trekAd.registerSuprAd(
-                            this@TrekMediaRecyclerViewPageActivity,
-                            trekMediaView,
-                            adData
-                        )
-                    }
-                })
-
-                suprAdAdapter.update(list)
-
+                getAd2()
 
             }
 
@@ -148,28 +137,21 @@ class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
         trekAd2.setTrekAdStatusListener(object : TrekAdStatusCallBack {
             override fun onAdError(message: String) {
                 Log.e("onAdError", message)
+
+                suprAdAdapter.update(list)
+
             }
 
             override fun onAdLoaded(adData: AdData) {
 
-                list[list.size - 2] = LocalSuprAdData(
-                    "春夏流浪風情，讓你的波希米亞風格再晉級",
-                    "http://pnn.aotter.net/Media/show/b87f68b6-8add-428f-b119-52e49c4e68b4.jpg",
-                    true
-                )
-
-                suprAdAdapter.setOnSuprAdViewRegisteredListener(object :
-                    OnSuprAdViewRegisteredListener {
-                    override fun onAdViewRegistered(
-                        trekMediaView: TrekMediaView
-                    ) {
-                        trekAd2.registerSuprAd(
-                            this@TrekMediaRecyclerViewPageActivity,
-                            trekMediaView,
-                            adData
-                        )
-                    }
-                })
+                list[8].trekAd?.let {
+                    list[8] = LocalSuprAdData(adData.title, adData.advertiserName, trekAd, adData)
+                } ?: kotlin.run {
+                    list.add(
+                        8,
+                        LocalSuprAdData(adData.title, adData.advertiserName, trekAd, adData)
+                    )
+                }
 
                 suprAdAdapter.update(list)
 

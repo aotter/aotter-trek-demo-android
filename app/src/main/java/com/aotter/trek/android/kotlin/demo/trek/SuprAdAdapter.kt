@@ -1,4 +1,4 @@
-package com.aotter.trek.android.kotlin.demo.trek
+package com.aotter.trek.demo.trek
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.aotter.net.trek.ads.TrekMediaView
-import com.aotter.trek.android.kotlin.demo.trek.supr_ad.OnSuprAdViewRegisteredListener
 import com.aotter.trek.demo.R
+import com.aotter.trek.demo.trek.supr_ad.OnSuprAdViewRegisteredListener
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
@@ -34,9 +34,9 @@ class SuprAdAdapter() : RecyclerView.Adapter<SuprAdAdapter.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
 
-        return if (list[position].isAd) {
+        return list[position].trekAd?.let {
             0
-        } else {
+        } ?: kotlin.run {
             1
         }
 
@@ -82,9 +82,11 @@ class SuprAdAdapter() : RecyclerView.Adapter<SuprAdAdapter.ViewHolder>() {
 
         fun bind(item: LocalSuprAdData) {
 
-            if (item.isAd) {
-                onSuprAdViewRegisteredListener?.onAdViewRegistered(trekMediaView3)
-            } else {
+            item.trekAd?.let { trek ->
+                item.adData?.let { adData ->
+                    trek.registerSuprAd(itemView.context, trekMediaView3, adData)
+                }
+            } ?: kotlin.run {
 
                 adTitle.text = item.title
 
