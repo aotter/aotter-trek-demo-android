@@ -1,4 +1,4 @@
-package com.aotter.trek.demo.trek
+package com.aotter.trek.android.kotlin.demo.trek
 
 import com.aotter.net.dto.mftc.response.AdData
 import com.aotter.net.trek.ads.TrekAd

@@ -1,4 +1,4 @@
-package com.aotter.trek.demo.trek
+package com.aotter.trek.android.kotlin.demo.trek
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.aotter.net.trek.ads.TrekMediaView
+import com.aotter.trek.android.kotlin.demo.trek.supr_ad.OnSuprAdViewRegisteredListener
 import com.aotter.trek.demo.R
-import com.aotter.trek.demo.trek.supr_ad.OnSuprAdViewRegisteredListener
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 

@@ -1,4 +1,4 @@
-package com.aotter.trek.demo.trek.supr_ad
+package com.aotter.trek.android.kotlin.demo.trek.supr_ad
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,8 @@ import com.aotter.net.dto.mftc.response.AdData
 import com.aotter.net.trek.AotterTrek
 import com.aotter.net.trek.ads.TrekAd
 import com.aotter.net.trek.ads.TrekAdStatusCallBack
+import com.aotter.trek.android.kotlin.demo.trek.CoverPageActivity
 import com.aotter.trek.demo.databinding.ActivityVastScrollPageBinding
-import com.aotter.trek.demo.trek.CoverPageActivity
 
 class TrekMediaScrollPageActivity : AppCompatActivity() {
 

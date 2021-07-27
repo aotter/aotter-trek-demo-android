@@ -1,4 +1,4 @@
-package com.aotter.trek.demo.trek.native_ad
+package com.aotter.trek.android.kotlin.demo.trek.native_ad
 
 import android.view.View
 

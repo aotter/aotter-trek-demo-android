@@ -1,14 +1,14 @@
-package com.aotter.trek.demo
+package com.aotter.trek.android.kotlin.demo
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.aotter.trek.android.kotlin.demo.trek.banner_ad.TrekBannerAdScrollPageActivity
+import com.aotter.trek.android.kotlin.demo.trek.native_ad.TrekNativeAdRecyclerViewPageActivity
+import com.aotter.trek.android.kotlin.demo.trek.native_ad.TrekNativeAdScrollPageActivity
+import com.aotter.trek.android.kotlin.demo.trek.supr_ad.TrekMediaRecyclerViewPageActivity
+import com.aotter.trek.android.kotlin.demo.trek.supr_ad.TrekMediaScrollPageActivity
 import com.aotter.trek.demo.databinding.ActivityMainBinding
-import com.aotter.trek.demo.trek.banner_ad.TrekBannerAdScrollPageActivity
-import com.aotter.trek.demo.trek.native_ad.TrekNativeAdRecyclerViewPageActivity
-import com.aotter.trek.demo.trek.native_ad.TrekNativeAdScrollPageActivity
-import com.aotter.trek.demo.trek.supr_ad.TrekMediaRecyclerViewPageActivity
-import com.aotter.trek.demo.trek.supr_ad.TrekMediaScrollPageActivity
 
 class MainActivity : AppCompatActivity() {
 

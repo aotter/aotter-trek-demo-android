@@ -1,4 +1,4 @@
-package com.aotter.trek.demo.trek.native_ad
+package com.aotter.trek.android.kotlin.demo.trek.native_ad
 
 import android.os.Bundle
 import android.util.Log
@@ -14,9 +14,9 @@ import com.aotter.net.trek.ads.TrekAd
 import com.aotter.net.trek.ads.TrekAdStatusCallBack
 import com.aotter.net.trek.annomation.EntityType
 import com.aotter.net.trek.sealed.ActionType
+import com.aotter.trek.android.kotlin.demo.trek.LocalNativeAdData
+import com.aotter.trek.android.kotlin.demo.trek.NativeAdAdapter
 import com.aotter.trek.demo.databinding.ActivityNativeAdRecyclerviewPageBinding
-import com.aotter.trek.demo.trek.LocalNativeAdData
-import com.aotter.trek.demo.trek.NativeAdAdapter
 import com.google.gson.JsonObject
 
 class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
