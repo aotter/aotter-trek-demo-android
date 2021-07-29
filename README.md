@@ -5,6 +5,9 @@ Trek SDK Example App Demo
 https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-sdk
 
 ## Trek SDK release change log
+- 2021/07/29 release - SDK `4.2.1`
+    - Add isExpired method
+    - Add isVideoAd method
 - 2021/07/16 release - SDK `4.2.0`
     - Optimize adData
     - Adjust TrekMediaView lifecycle
