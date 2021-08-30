@@ -5,6 +5,8 @@ Trek SDK Example App Demo
 https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-sdk
 
 ## Trek SDK release change log
+- 2021/08/30 release - SDK `4.2.5`
+     - remove supr.ad third imp
 - 2021/08/24 release - SDK `4.2.4`
      - TrekMediaView default height
      - Defindes key of jsonObject
