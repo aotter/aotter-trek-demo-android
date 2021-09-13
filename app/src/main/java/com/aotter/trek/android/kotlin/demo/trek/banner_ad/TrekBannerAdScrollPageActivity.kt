@@ -41,9 +41,9 @@ class TrekBannerAdScrollPageActivity : AppCompatActivity() {
 
             override fun onAdLoaded(adData: AdData) {
 
-                bannerAd.registerSuprAd(
+                bannerAd.registerBannerAd(
                     this@TrekBannerAdScrollPageActivity,
-                    viewBinding.trekMediationView,
+                    viewBinding.trekBannerView,
                     adData
                 )
 
