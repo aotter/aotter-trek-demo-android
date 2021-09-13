@@ -5,6 +5,13 @@ Trek SDK Example App Demo
 https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-sdk
 
 ## Trek SDK release change log
+- 2021/09/13 release - SDK `4.3.0`
+     - Fix VTR 
+     - Fix CTR
+     - Fix Imp
+     - Adjust TrekMediaView lifecycle
+     - Adjsut TrekMediaView play video when visibility is 50% or more
+     - New TrekBannerView
 - 2021/08/31 release - SDK `4.2.6`
      - remove unneeded permission 
 - 2021/08/30 release - SDK `4.2.5`
