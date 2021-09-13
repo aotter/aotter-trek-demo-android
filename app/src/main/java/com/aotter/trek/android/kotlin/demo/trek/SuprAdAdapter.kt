@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.aotter.net.trek.ads.TrekMediaView
 import com.aotter.trek.android.kotlin.demo.trek.supr_ad.OnSuprAdViewRegisteredListener
@@ -78,13 +79,15 @@ class SuprAdAdapter() : RecyclerView.Adapter<SuprAdAdapter.ViewHolder>() {
 
         private val adImg = itemView.findViewById<ImageView>(R.id.adImg)
 
+        private val container = itemView.findViewById<ConstraintLayout>(R.id.container)
+
         private val trekMediaView3 = itemView.findViewById<TrekMediaView>(R.id.trekMediaView3)
 
         fun bind(item: LocalSuprAdData) {
 
             item.trekAd?.let { trek ->
                 item.adData?.let { adData ->
-                    trek.registerSuprAd(itemView.context, trekMediaView3, adData)
+                    trek.registerSuprAd(itemView.context, container, trekMediaView3, adData)
                 }
             } ?: kotlin.run {
 

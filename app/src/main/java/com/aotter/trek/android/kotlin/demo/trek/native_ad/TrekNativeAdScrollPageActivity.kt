@@ -8,6 +8,7 @@ import com.aotter.net.dto.Entity
 import com.aotter.net.dto.User
 import com.aotter.net.dto.mftc.response.AdData
 import com.aotter.net.trek.AotterTrek
+import com.aotter.net.trek.TrekDataKey
 import com.aotter.net.trek.ads.TrekAd
 import com.aotter.net.trek.ads.TrekAdStatusCallBack
 import com.aotter.net.trek.sealed.ActionType
@@ -153,8 +154,13 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
 
         val jsonObject = JsonObject()
 
-        jsonObject.addProperty("aaaa", "dsadsadsada")
-        jsonObject.addProperty("ssss", "dsadsadsada")
+        jsonObject.addProperty(TrekDataKey.REFERENCE, "disp")
+        jsonObject.addProperty(TrekDataKey.PUBLISHED_DATE, 1438090882490L)
+        jsonObject.addProperty(TrekDataKey.IMG, "http://pnn.aotter.net/Media/show/cna.jpg")
+        jsonObject.addProperty(TrekDataKey.AUTHOR, "skybear")
+        jsonObject.addProperty(TrekDataKey.ADDRESS, "105台北市松山區南京東路四段2號")
+        jsonObject.addProperty(TrekDataKey.LAT, 25.0463684)
+        jsonObject.addProperty(TrekDataKey.LNG, 121.5501565)
 
         val entity = Entity(
             "anthony", "anthony", EntityType.GAME.type, "anthony", listOf("News"),

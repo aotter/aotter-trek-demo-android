@@ -77,6 +77,7 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
 
                 trekAd.registerSuprAd(
                     this@TrekMediaScrollPageActivity,
+                    viewBinding.container,
                     viewBinding.trekMediaView4,
                     adData
                 )
@@ -109,6 +110,7 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
 
                 trekAd2.registerSuprAd(
                     this@TrekMediaScrollPageActivity,
+                    viewBinding.container2,
                     viewBinding.trekMediaView10,
                     adData
                 )
@@ -143,6 +145,7 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
 
                 trekAd.registerSuprAd(
                     this@TrekMediaScrollPageActivity,
+                    viewBinding.container3,
                     viewBinding.trekMediaView5,
                     adData
                 )
