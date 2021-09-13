@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/teal_200"
-    tools:context="com.aotter.trek.android.kotlin.demo.trek.supr_ad.TrekMediaScrollPageActivity">
+    tools:context=".trek.supr_ad.TrekMediaScrollPageActivity">
 
     <Button
         android:id="@+id/refreshBtn"
@@ -62,11 +62,24 @@
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/ic_launcher_background" />
 
-            <com.aotter.net.trek.ads.TrekMediaView
-                android:id="@+id/trekMediaView5"
-                android:layout_width="300dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1">
+
+                <com.aotter.net.trek.ads.TrekMediaView
+                    android:id="@+id/trekMediaView5"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_weight="1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
                 android:id="@+id/imageView18"
@@ -112,7 +125,8 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coverpageBtn">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -126,13 +140,25 @@
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/ic_launcher_background" />
 
-            <com.aotter.net.trek.ads.TrekMediaView
-                android:id="@+id/trekMediaView4"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_height="wrap_content">
 
-            </com.aotter.net.trek.ads.TrekMediaView>
+                <com.aotter.net.trek.ads.TrekMediaView
+                    android:id="@+id/trekMediaView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="32dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </com.aotter.net.trek.ads.TrekMediaView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
                 android:id="@+id/volumeImageView"
@@ -176,11 +202,23 @@
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/ic_launcher_background" />
 
-            <com.aotter.net.trek.ads.TrekMediaView
-                android:id="@+id/trekMediaView10"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center" />
+                android:layout_height="wrap_content">
+
+                <com.aotter.net.trek.ads.TrekMediaView
+                    android:id="@+id/trekMediaView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="32dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
                 android:id="@+id/imageView11"
