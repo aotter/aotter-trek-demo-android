@@ -5,6 +5,13 @@ Trek SDK Example App Demo
 https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-sdk
 
 ## Trek SDK release change log
+- 2021/12/01 release - SDK `4.3.2`
+     - support android 12
+     - support kotlin version 1.5.31
+     - update exoplayer
+     - adjust impression tool
+     - adjust third click event flow
+     - fix banner ad、supr.ad impression event
 - 2021/09/27 release - SDK `4.3.1`
      - Adjust om impressionType
 - 2021/09/13 release - SDK `4.3.0`
