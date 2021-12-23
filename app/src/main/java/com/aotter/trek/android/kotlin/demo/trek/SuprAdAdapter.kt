@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.aotter.net.trek.ads.TrekMediaView
-import com.aotter.trek.android.kotlin.demo.trek.supr_ad.OnSuprAdViewRegisteredListener
 import com.aotter.trek.demo.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -16,14 +15,6 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 class SuprAdAdapter() : RecyclerView.Adapter<SuprAdAdapter.ViewHolder>() {
 
     private var list = mutableListOf<LocalSuprAdData>()
-
-    private var onSuprAdViewRegisteredListener: OnSuprAdViewRegisteredListener? = null
-
-    fun setOnSuprAdViewRegisteredListener(onSuprAdViewRegisteredListener: OnSuprAdViewRegisteredListener) {
-
-        this.onSuprAdViewRegisteredListener = onSuprAdViewRegisteredListener
-
-    }
 
     fun update(list: MutableList<LocalSuprAdData>) {
 
@@ -87,7 +78,7 @@ class SuprAdAdapter() : RecyclerView.Adapter<SuprAdAdapter.ViewHolder>() {
 
             item.trekAd?.let { trek ->
                 item.adData?.let { adData ->
-                    trek.registerSuprAd(itemView.context, container, trekMediaView3, adData)
+                    trek.registerSuprAd(container, trekMediaView3, adData)
                 }
             } ?: kotlin.run {
 

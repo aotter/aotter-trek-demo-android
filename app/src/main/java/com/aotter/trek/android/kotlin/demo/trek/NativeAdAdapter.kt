@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.aotter.trek.android.kotlin.demo.trek.native_ad.OnNativeAdViewRegisteredListener
 import com.aotter.trek.demo.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -15,13 +14,6 @@ class NativeAdAdapter() : RecyclerView.Adapter<NativeAdAdapter.ViewHolder>() {
 
     private var list = mutableListOf<LocalNativeAdData>()
 
-    private var onNativeAdViewRegisteredListener: OnNativeAdViewRegisteredListener? = null
-
-    fun setOnAdViewRegisteredListener(onNativeAdViewRegisteredListener: OnNativeAdViewRegisteredListener) {
-
-        this.onNativeAdViewRegisteredListener = onNativeAdViewRegisteredListener
-
-    }
 
     fun update(list: MutableList<LocalNativeAdData>) {
 
@@ -83,7 +75,7 @@ class NativeAdAdapter() : RecyclerView.Adapter<NativeAdAdapter.ViewHolder>() {
 
             item.trekAd?.let { trekAd ->
                 item.adData?.let { adData ->
-                    trekAd.registerNativeAd(itemView.context, itemView, adData)
+                    trekAd.registerNativeAd(itemView, adData)
                 }
             }
 

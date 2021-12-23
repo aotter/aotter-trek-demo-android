@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".trek.native_ad.TrekNativeAdRecyclerViewPageActivity">
+    tools:context="com.aotter.trek.android.kotlin.demo.trek.native_ad.TrekNativeAdRecyclerViewPageActivity">
 
     <Button
         android:id="@+id/refreshBtn"

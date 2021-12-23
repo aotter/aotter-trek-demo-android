@@ -73,7 +73,6 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
             override fun onAdLoaded(adData: AdData) {
 
                 trekAd2.registerNativeAd(
-                    this@TrekNativeAdScrollPageActivity,
                     viewBinding.nativeViewTen,
                     adData
                 )
@@ -116,7 +115,6 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
             override fun onAdLoaded(adData: AdData) {
 
                 trekAd.registerNativeAd(
-                    this@TrekNativeAdScrollPageActivity,
                     viewBinding.nativeViewTwo,
                     adData
                 )
