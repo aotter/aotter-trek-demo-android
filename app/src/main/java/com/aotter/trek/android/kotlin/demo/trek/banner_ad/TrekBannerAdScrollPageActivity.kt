@@ -42,7 +42,6 @@ class TrekBannerAdScrollPageActivity : AppCompatActivity() {
             override fun onAdLoaded(adData: AdData) {
 
                 bannerAd.registerBannerAd(
-                    this@TrekBannerAdScrollPageActivity,
                     viewBinding.trekBannerView,
                     adData
                 )
