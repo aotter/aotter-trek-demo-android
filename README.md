@@ -5,6 +5,13 @@ Trek SDK Example App Demo
 https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-sdk
 
 ## Trek SDK release change log
+- 2022/03/22 release - SDK `4.3.4`
+     - change domain
+     - support om json tag
+     - support om js string dynamic update
+     - support webview slide
+     - improve BackgroundHolder setting
+     - update ExoPlayer
 - 2021/12/23 release - SDK `4.3.4`
      - use Activity page (instead of DialogFragment page) when context comes from the application
 - 2021/12/01 release - SDK `4.3.2`
