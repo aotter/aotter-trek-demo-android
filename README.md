@@ -5,7 +5,7 @@ Trek SDK Example App Demo
 https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-sdk
 
 ## Trek SDK release change log
-- 2022/03/22 release - SDK `4.3.4`
+- 2022/03/22 release - SDK `4.4.0`
      - change domain
      - support om json tag
      - support om js string dynamic update
