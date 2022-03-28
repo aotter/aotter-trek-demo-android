@@ -5,6 +5,11 @@ Trek SDK Example App Demo
 https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-sdk
 
 ## Trek SDK release change log
+- 2022/03/28 release - SDK `4.4.2`
+     - Add `setContentUrl()` & `setContentTitle()`
+     - OMSDK obstruction minor adjustment
+     - Add OMSDK contentUrl and customRefencData
+     - Mapping Admob mediation `hasVideoContent` parameter
 - 2022/03/22 release - SDK `4.4.0`
      - change domain
      - support om json tag
