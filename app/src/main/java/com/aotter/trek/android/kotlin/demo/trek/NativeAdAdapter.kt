@@ -14,7 +14,6 @@ class NativeAdAdapter() : RecyclerView.Adapter<NativeAdAdapter.ViewHolder>() {
 
     private var list = mutableListOf<LocalNativeAdData>()
 
-
     fun update(list: MutableList<LocalNativeAdData>) {
 
         this.list = list

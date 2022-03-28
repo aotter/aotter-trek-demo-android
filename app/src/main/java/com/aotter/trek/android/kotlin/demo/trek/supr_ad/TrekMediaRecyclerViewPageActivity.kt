@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.aotter.net.dto.mftc.response.AdData
 import com.aotter.net.trek.AotterTrek
 import com.aotter.net.trek.ads.TrekAd
+import com.aotter.net.trek.ads.TrekAdRequest
 import com.aotter.net.trek.ads.TrekAdStatusCallBack
 import com.aotter.trek.android.kotlin.demo.trek.CoverPageActivity
 import com.aotter.trek.android.kotlin.demo.trek.LocalSuprAdData
@@ -22,6 +23,12 @@ class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
     private lateinit var trekAd: TrekAd
 
     private lateinit var trekAd2: TrekAd
+
+    private val trekAdRequest = TrekAdRequest().Builder()
+        .setCategory("news")
+        .setContentUrl("https://agirls.aotter.net/")
+        .setContentTitle("電獺少女")
+        .build()
 
     private lateinit var suprAdAdapter: SuprAdAdapter
 
@@ -55,8 +62,7 @@ class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
 
         viewBinding.refreshBtn.setOnClickListener {
 
-            trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").setCategory("news")
-                .applyTrekAd()
+            trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").applyTrekAd(trekAdRequest)
 
         }
 
@@ -127,7 +133,7 @@ class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
 
         })
 
-        trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").setCategory("news").applyTrekAd()
+        trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").applyTrekAd(trekAdRequest)
 
     }
 
@@ -169,8 +175,7 @@ class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
 
         })
 
-        trekAd2.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").setCategory("news")
-            .applyTrekAd()
+        trekAd2.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").applyTrekAd(trekAdRequest)
 
     }
 

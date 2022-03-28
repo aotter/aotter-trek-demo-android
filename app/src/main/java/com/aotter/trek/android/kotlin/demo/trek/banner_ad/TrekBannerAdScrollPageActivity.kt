@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.aotter.net.dto.mftc.response.AdData
 import com.aotter.net.trek.AotterTrek
+import com.aotter.net.trek.ads.TrekAdRequest
 import com.aotter.net.trek.ads.TrekAdStatusCallBack
 import com.aotter.trek.demo.databinding.ActivityBannerAdScrollPageBinding
 
@@ -59,8 +60,14 @@ class TrekBannerAdScrollPageActivity : AppCompatActivity() {
 
         })
 
-        bannerAd.setPlaceUid("68856f90-83b7-4f09-98d4-7f480842cb02").setCategory("news")
-            .applyTrekAd()
+        val trekAdRequest = TrekAdRequest().Builder()
+            .setCategory("news")
+            .setContentUrl("https://agirls.aotter.net/")
+            .setContentTitle("電獺少女")
+            .build()
+
+        bannerAd.setPlaceUid("68856f90-83b7-4f09-98d4-7f480842cb02")
+            .applyTrekAd(trekAdRequest)
 
     }
 

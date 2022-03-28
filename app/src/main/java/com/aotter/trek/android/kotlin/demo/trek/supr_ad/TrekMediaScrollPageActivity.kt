@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.aotter.net.dto.mftc.response.AdData
 import com.aotter.net.trek.AotterTrek
 import com.aotter.net.trek.ads.TrekAd
+import com.aotter.net.trek.ads.TrekAdRequest
 import com.aotter.net.trek.ads.TrekAdStatusCallBack
 import com.aotter.trek.android.kotlin.demo.trek.CoverPageActivity
 import com.aotter.trek.demo.databinding.ActivityVastScrollPageBinding
@@ -21,6 +22,12 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
     private lateinit var trekAd2: TrekAd
 
     private lateinit var trekAd3: TrekAd
+
+    private val trekAdRequest = TrekAdRequest().Builder()
+        .setCategory("news")
+        .setContentUrl("https://agirls.aotter.net/")
+        .setContentTitle("電獺少女")
+        .build()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,8 +58,7 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
 
         viewBinding.refreshBtn.setOnClickListener {
 
-            trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").setCategory("news")
-                .applyTrekAd()
+            trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").applyTrekAd(trekAdRequest)
 
         }
 
@@ -94,7 +100,7 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
 
         })
 
-        trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").setCategory("news").applyTrekAd()
+        trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").applyTrekAd(trekAdRequest)
 
     }
 
@@ -126,8 +132,7 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
 
         })
 
-        trekAd2.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").setCategory("news")
-            .applyTrekAd()
+        trekAd2.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").applyTrekAd(trekAdRequest)
 
     }
 
@@ -160,8 +165,7 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
 
         })
 
-        trekAd3.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").setCategory("news")
-            .applyTrekAd()
+        trekAd3.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").applyTrekAd(trekAdRequest)
 
     }
 

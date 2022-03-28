@@ -10,6 +10,7 @@ import com.aotter.net.dto.mftc.response.AdData
 import com.aotter.net.trek.AotterTrek
 import com.aotter.net.trek.TrekDataKey
 import com.aotter.net.trek.ads.TrekAd
+import com.aotter.net.trek.ads.TrekAdRequest
 import com.aotter.net.trek.ads.TrekAdStatusCallBack
 import com.aotter.net.trek.sealed.ActionType
 import com.aotter.net.trek.sealed.EntityType
@@ -25,6 +26,12 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
     private lateinit var trekAd: TrekAd
 
     private lateinit var trekAd2: TrekAd
+
+    private val trekAdRequest = TrekAdRequest().Builder()
+        .setCategory("news")
+        .setContentUrl("https://agirls.aotter.net/")
+        .setContentTitle("電獺少女")
+        .build()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,10 +62,8 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
     private fun initView() {
 
         viewBinding.refreshBtn.setOnClickListener {
-            trekAd2.setPlaceUid("45419fb5-a846-4c4a-837f-3b391ec7b45a").setCategory("news")
-                .applyTrekAd()
-            trekAd.setPlaceUid("45419fb5-a846-4c4a-837f-3b391ec7b45a").setCategory("news")
-                .applyTrekAd()
+            trekAd2.setPlaceUid("45419fb5-a846-4c4a-837f-3b391ec7b45a").applyTrekAd(trekAdRequest)
+            trekAd.setPlaceUid("45419fb5-a846-4c4a-837f-3b391ec7b45a").applyTrekAd(trekAdRequest)
         }
 
     }
@@ -100,8 +105,7 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
 
         })
 
-        trekAd2.setPlaceUid("45419fb5-a846-4c4a-837f-3b391ec7b45a").setCategory("news")
-            .applyTrekAd()
+        trekAd2.setPlaceUid("45419fb5-a846-4c4a-837f-3b391ec7b45a").applyTrekAd(trekAdRequest)
 
     }
 
@@ -142,7 +146,7 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
 
         })
 
-        trekAd.setPlaceUid("45419fb5-a846-4c4a-837f-3b391ec7b45a").setCategory("news").applyTrekAd()
+        trekAd.setPlaceUid("45419fb5-a846-4c4a-837f-3b391ec7b45a").applyTrekAd(trekAdRequest)
 
     }
 
