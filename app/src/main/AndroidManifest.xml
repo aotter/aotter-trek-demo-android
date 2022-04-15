@@ -10,7 +10,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AotterTrekDemo">
+        android:theme="@style/Theme.MyApplication">
         <activity android:name="com.aotter.trek.android.kotlin.demo.trek.CoverPageActivity" />
         <activity android:name="com.aotter.trek.android.kotlin.demo.trek.banner_ad.TrekBannerAdScrollPageActivity" />
 
@@ -23,7 +23,7 @@
         <activity android:name="com.aotter.trek.android.kotlin.demo.trek.native_ad.TrekNativeAdScrollPageActivity" />
         <activity android:name="com.aotter.trek.android.kotlin.demo.trek.native_ad.TrekNativeAdRecyclerViewPageActivity" />
         <activity
-            android:name="com.aotter.trek.android.kotlin.demo.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

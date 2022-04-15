@@ -2,7 +2,6 @@ package com.aotter.trek.android.kotlin.demo.trek.native_ad
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aotter.net.dto.Entity
@@ -11,8 +10,8 @@ import com.aotter.net.dto.User
 import com.aotter.net.dto.mftc.response.AdData
 import com.aotter.net.trek.AotterTrek
 import com.aotter.net.trek.ads.TrekAd
+import com.aotter.net.trek.ads.TrekAdListener
 import com.aotter.net.trek.ads.TrekAdRequest
-import com.aotter.net.trek.ads.TrekAdStatusCallBack
 import com.aotter.net.trek.annomation.EntityType
 import com.aotter.net.trek.sealed.ActionType
 import com.aotter.trek.android.kotlin.demo.trek.LocalNativeAdData
@@ -28,7 +27,7 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
 
     private lateinit var trekAd2: TrekAd
 
-    private val trekAdRequest = TrekAdRequest().Builder()
+    private val trekAdRequest = TrekAdRequest.Builder()
         .setCategory("news")
         .setContentUrl("https://agirls.aotter.net/")
         .setContentTitle("電獺少女")
@@ -45,7 +44,7 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
 
         setContentView(viewBinding.root)
 
-        AotterTrek.initAotterService(
+        AotterTrek.initialize(
             this@TrekNativeAdRecyclerViewPageActivity,
             "DNgNhOwfbUkOqcQFI+uD"
         ) {}
@@ -66,7 +65,7 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
     private fun initView() {
 
         viewBinding.refreshBtn.setOnClickListener {
-            trekAd.setPlaceUid("45419fb5-a846-4c4a-837f-3b391ec7b45a").applyTrekAd(trekAdRequest)
+            trekAd.setPlaceUid("45419fb5-a846-4c4a-837f-3b391ec7b45a").loadAd(trekAdRequest)
         }
 
 
@@ -97,8 +96,8 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
 
     private fun getAd() {
 
-        trekAd.setTrekAdStatusListener(object : TrekAdStatusCallBack {
-            override fun onAdError(message: String) {
+        trekAd.setTrekAdListener(object : TrekAdListener {
+            override fun onAdFailedToLoad(message: String) {
                 Log.e("onAdError", message)
 
                 getAd2()
@@ -133,25 +132,25 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
 
             }
 
-            override fun onAdClicked(adData: AdData) {
+            override fun onAdClicked() {
                 Log.e("onAdClicked", "AdClicked success.")
             }
 
-            override fun onAdImpression(view: View) {
+            override fun onAdImpression() {
                 Log.e("onAdImpression", "Impression success.")
 
             }
 
         })
 
-        trekAd.setPlaceUid("45419fb5-a846-4c4a-837f-3b391ec7b45a").applyTrekAd(trekAdRequest)
+        trekAd.setPlaceUid("45419fb5-a846-4c4a-837f-3b391ec7b45a").loadAd(trekAdRequest)
 
     }
 
     private fun getAd2() {
 
-        trekAd2.setTrekAdStatusListener(object : TrekAdStatusCallBack {
-            override fun onAdError(message: String) {
+        trekAd2.setTrekAdListener(object : TrekAdListener {
+            override fun onAdFailedToLoad(message: String) {
                 Log.e("onAdError", message)
                 nativeAdAdapter.update(list)
             }
@@ -185,18 +184,18 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
 
             }
 
-            override fun onAdClicked(adData: AdData) {
+            override fun onAdClicked() {
                 Log.e("onAdClicked", "AdClicked success.")
             }
 
-            override fun onAdImpression(view: View) {
+            override fun onAdImpression() {
                 Log.e("onAdImpression", "Impression success.")
 
             }
 
         })
 
-        trekAd2.setPlaceUid("45419fb5-a846-4c4a-837f-3b391ec7b45a").applyTrekAd(trekAdRequest)
+        trekAd2.setPlaceUid("45419fb5-a846-4c4a-837f-3b391ec7b45a").loadAd(trekAdRequest)
 
     }
 

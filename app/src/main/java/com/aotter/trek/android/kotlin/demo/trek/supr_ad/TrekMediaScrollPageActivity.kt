@@ -3,13 +3,12 @@ package com.aotter.trek.android.kotlin.demo.trek.supr_ad
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.aotter.net.dto.mftc.response.AdData
 import com.aotter.net.trek.AotterTrek
 import com.aotter.net.trek.ads.TrekAd
+import com.aotter.net.trek.ads.TrekAdListener
 import com.aotter.net.trek.ads.TrekAdRequest
-import com.aotter.net.trek.ads.TrekAdStatusCallBack
 import com.aotter.trek.android.kotlin.demo.trek.CoverPageActivity
 import com.aotter.trek.demo.databinding.ActivityVastScrollPageBinding
 
@@ -23,7 +22,7 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
 
     private lateinit var trekAd3: TrekAd
 
-    private val trekAdRequest = TrekAdRequest().Builder()
+    private val trekAdRequest = TrekAdRequest.Builder()
         .setCategory("news")
         .setContentUrl("https://agirls.aotter.net/")
         .setContentTitle("電獺少女")
@@ -36,7 +35,7 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
 
         setContentView(viewBinding.root)
 
-        AotterTrek.initAotterService(
+        AotterTrek.initialize(
             this@TrekMediaScrollPageActivity,
             "DNgNhOwfbUkOqcQFI+uD"
         ) {}
@@ -58,7 +57,7 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
 
         viewBinding.refreshBtn.setOnClickListener {
 
-            trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").applyTrekAd(trekAdRequest)
+            trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").loadAd(trekAdRequest)
 
         }
 
@@ -74,8 +73,8 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
 
     private fun getVastAd() {
 
-        trekAd.setTrekAdStatusListener(object : TrekAdStatusCallBack {
-            override fun onAdError(message: String) {
+        trekAd.setTrekAdListener(object : TrekAdListener {
+            override fun onAdFailedToLoad(message: String) {
                 Log.e("onAdError", message)
             }
 
@@ -89,25 +88,25 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
 
             }
 
-            override fun onAdClicked(adData: AdData) {
+            override fun onAdClicked() {
                 Log.e("onAdClicked", "AdClicked success.")
             }
 
-            override fun onAdImpression(view: View) {
+            override fun onAdImpression() {
                 Log.e("onAdImpression", "AD Impression success.")
 
             }
 
         })
 
-        trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").applyTrekAd(trekAdRequest)
+        trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").loadAd(trekAdRequest)
 
     }
 
     private fun getVastAd2() {
 
-        trekAd2.setTrekAdStatusListener(object : TrekAdStatusCallBack {
-            override fun onAdError(message: String) {
+        trekAd2.setTrekAdListener(object : TrekAdListener {
+            override fun onAdFailedToLoad(message: String) {
                 Log.e("onAdError", message)
             }
 
@@ -121,26 +120,26 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
 
             }
 
-            override fun onAdClicked(adData: AdData) {
+            override fun onAdClicked() {
                 Log.e("onAdClicked", "AdClicked success.")
             }
 
-            override fun onAdImpression(view: View) {
+            override fun onAdImpression() {
                 Log.e("onAdImpression", "AD2 Impression success.")
 
             }
 
         })
 
-        trekAd2.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").applyTrekAd(trekAdRequest)
+        trekAd2.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").loadAd(trekAdRequest)
 
     }
 
 
     private fun getVastAd3() {
 
-        trekAd3.setTrekAdStatusListener(object : TrekAdStatusCallBack {
-            override fun onAdError(message: String) {
+        trekAd3.setTrekAdListener(object : TrekAdListener {
+            override fun onAdFailedToLoad(message: String) {
                 Log.e("onAdError", message)
             }
 
@@ -154,18 +153,18 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
 
             }
 
-            override fun onAdClicked(adData: AdData) {
+            override fun onAdClicked() {
                 Log.e("onAdClicked", "AdClicked success.")
             }
 
-            override fun onAdImpression(view: View) {
+            override fun onAdImpression() {
                 Log.e("onAdImpression", "AD3 Impression success.")
 
             }
 
         })
 
-        trekAd3.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").applyTrekAd(trekAdRequest)
+        trekAd3.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").loadAd(trekAdRequest)
 
     }
 

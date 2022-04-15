@@ -3,14 +3,13 @@ package com.aotter.trek.android.kotlin.demo.trek.supr_ad
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aotter.net.dto.mftc.response.AdData
 import com.aotter.net.trek.AotterTrek
 import com.aotter.net.trek.ads.TrekAd
+import com.aotter.net.trek.ads.TrekAdListener
 import com.aotter.net.trek.ads.TrekAdRequest
-import com.aotter.net.trek.ads.TrekAdStatusCallBack
 import com.aotter.trek.android.kotlin.demo.trek.CoverPageActivity
 import com.aotter.trek.android.kotlin.demo.trek.LocalSuprAdData
 import com.aotter.trek.android.kotlin.demo.trek.SuprAdAdapter
@@ -24,7 +23,7 @@ class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
 
     private lateinit var trekAd2: TrekAd
 
-    private val trekAdRequest = TrekAdRequest().Builder()
+    private val trekAdRequest = TrekAdRequest.Builder()
         .setCategory("news")
         .setContentUrl("https://agirls.aotter.net/")
         .setContentTitle("電獺少女")
@@ -42,7 +41,7 @@ class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
 
 
-        AotterTrek.initAotterService(
+        AotterTrek.initialize(
             this@TrekMediaRecyclerViewPageActivity,
             "DNgNhOwfbUkOqcQFI+uD"
         ) {}
@@ -62,7 +61,7 @@ class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
 
         viewBinding.refreshBtn.setOnClickListener {
 
-            trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").applyTrekAd(trekAdRequest)
+            trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").loadAd(trekAdRequest)
 
         }
 
@@ -99,8 +98,8 @@ class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
 
     private fun getAd() {
 
-        trekAd.setTrekAdStatusListener(object : TrekAdStatusCallBack {
-            override fun onAdError(message: String) {
+        trekAd.setTrekAdListener(object : TrekAdListener {
+            override fun onAdFailedToLoad(message: String) {
                 Log.e("onAdError", message)
 
                 getAd2()
@@ -121,11 +120,11 @@ class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
 
             }
 
-            override fun onAdClicked(adData: AdData) {
+            override fun onAdClicked() {
                 Log.e("onAdClicked", "AdClicked success.")
             }
 
-            override fun onAdImpression(view: View) {
+            override fun onAdImpression() {
 
                 Log.e("onAdImpression", "Impression success.")
 
@@ -133,15 +132,15 @@ class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
 
         })
 
-        trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").applyTrekAd(trekAdRequest)
+        trekAd.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").loadAd(trekAdRequest)
 
     }
 
 
     private fun getAd2() {
 
-        trekAd2.setTrekAdStatusListener(object : TrekAdStatusCallBack {
-            override fun onAdError(message: String) {
+        trekAd2.setTrekAdListener(object : TrekAdListener {
+            override fun onAdFailedToLoad(message: String) {
                 Log.e("onAdError", message)
 
                 suprAdAdapter.update(list)
@@ -163,11 +162,11 @@ class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
 
             }
 
-            override fun onAdClicked(adData: AdData) {
+            override fun onAdClicked() {
                 Log.e("onAdClicked", "AdClicked success.")
             }
 
-            override fun onAdImpression(view: View) {
+            override fun onAdImpression() {
 
                 Log.e("onAdImpression", "Impression success.")
 
@@ -175,7 +174,7 @@ class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
 
         })
 
-        trekAd2.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").applyTrekAd(trekAdRequest)
+        trekAd2.setPlaceUid("81608f91-8b2b-4f8f-86a1-539a1959f836").loadAd(trekAdRequest)
 
     }
 
