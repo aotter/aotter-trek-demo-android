@@ -7,6 +7,7 @@ https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-s
 ## Trek SDK release change log
 - 2022/04/15 release - SDK `4.4.5` (Recommend)
      - Optimized implementation
+     - The TrekAdmobAdViewBinder class has been removed, and the admob mediation binding view flow has been integrated into the mediation adapter.
      - Update admob mediation custom adapter ( [Migrate to SDK v21](https://developers.google.com/admob/android/migration) )
 - 2022/03/28 release - SDK `4.4.2`
      - Add `setContentUrl()` & `setContentTitle()`
