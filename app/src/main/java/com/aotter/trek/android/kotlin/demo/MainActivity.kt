@@ -3,6 +3,7 @@ package com.aotter.trek.demo
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.aotter.net.trek.AotterTrek
 import com.aotter.trek.android.kotlin.demo.trek.banner_ad.TrekBannerAdScrollPageActivity
 import com.aotter.trek.android.kotlin.demo.trek.native_ad.TrekNativeAdRecyclerViewPageActivity
 import com.aotter.trek.android.kotlin.demo.trek.native_ad.TrekNativeAdScrollPageActivity
@@ -21,8 +22,12 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(viewBinding.root)
 
-        initView()
+        AotterTrek.initialize(
+            this,
+            "DNgNhOwfbUkOqcQFI+uD"
+        ) {}
 
+        initView()
 
     }
 

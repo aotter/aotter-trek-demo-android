@@ -39,11 +39,6 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
 
         setContentView(viewBinding.root)
 
-        AotterTrek.initialize(
-            this@TrekNativeAdScrollPageActivity,
-            "DNgNhOwfbUkOqcQFI+uD"
-        ) {}
-
         initView()
 
         initTracker()

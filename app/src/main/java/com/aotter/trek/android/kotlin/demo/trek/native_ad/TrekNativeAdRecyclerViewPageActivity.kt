@@ -44,11 +44,6 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
 
         setContentView(viewBinding.root)
 
-        AotterTrek.initialize(
-            this@TrekNativeAdRecyclerViewPageActivity,
-            "DNgNhOwfbUkOqcQFI+uD"
-        ) {}
-
         initView()
 
         initTracker()

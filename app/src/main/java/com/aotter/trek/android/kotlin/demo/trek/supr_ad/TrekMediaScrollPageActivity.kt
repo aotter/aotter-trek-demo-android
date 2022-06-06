@@ -35,11 +35,6 @@ class TrekMediaScrollPageActivity : AppCompatActivity() {
 
         setContentView(viewBinding.root)
 
-        AotterTrek.initialize(
-            this@TrekMediaScrollPageActivity,
-            "DNgNhOwfbUkOqcQFI+uD"
-        ) {}
-
         trekAd = AotterTrek.trekService(this)
         trekAd2 = AotterTrek.trekService(this)
         trekAd3 = AotterTrek.trekService(this)

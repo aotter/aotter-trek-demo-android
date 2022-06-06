@@ -21,11 +21,6 @@ class TrekBannerAdScrollPageActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
 
 
-        AotterTrek.initialize(
-            this@TrekBannerAdScrollPageActivity,
-            "DNgNhOwfbUkOqcQFI+uD"
-        ) {}
-
         loadBannerAd()
 
     }

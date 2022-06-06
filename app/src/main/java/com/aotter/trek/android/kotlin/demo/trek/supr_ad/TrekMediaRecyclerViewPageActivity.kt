@@ -40,12 +40,6 @@ class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
 
         setContentView(viewBinding.root)
 
-
-        AotterTrek.initialize(
-            this@TrekMediaRecyclerViewPageActivity,
-            "DNgNhOwfbUkOqcQFI+uD"
-        ) {}
-
         trekAd = AotterTrek.trekService(this)
 
         trekAd2 = AotterTrek.trekService(this)
