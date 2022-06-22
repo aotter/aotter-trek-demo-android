@@ -55,7 +55,7 @@ dependencies {
     //gson
     implementation 'com.google.code.gson:gson:2.9.0'
 
-    implementation 'com.aotter.net:trek-sdk-android-kotlin:4.4.5'
+    implementation 'com.aotter.net:trek-sdk-android-kotlin:4.5.0'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.7.0'
