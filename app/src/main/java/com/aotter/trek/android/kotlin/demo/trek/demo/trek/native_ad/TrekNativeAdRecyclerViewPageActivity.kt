@@ -1,4 +1,4 @@
-package com.aotter.trek.android.kotlin.demo.trek.native_ad
+package com.aotter.trek.android.kotlin.demo.trek.demo.trek.native_ad
 
 import android.os.Bundle
 import android.util.Log
@@ -14,9 +14,9 @@ import com.aotter.net.trek.ads.TrekAdListener
 import com.aotter.net.trek.ads.TrekAdRequest
 import com.aotter.net.trek.annomation.EntityType
 import com.aotter.net.trek.sealed.ActionType
-import com.aotter.trek.android.kotlin.demo.trek.LocalNativeAdData
-import com.aotter.trek.android.kotlin.demo.trek.NativeAdAdapter
 import com.aotter.trek.demo.databinding.ActivityNativeAdRecyclerviewPageBinding
+import com.aotter.trek.android.kotlin.demo.trek.demo.trek.LocalNativeAdData
+import com.aotter.trek.android.kotlin.demo.trek.demo.trek.NativeAdAdapter
 import com.google.gson.JsonObject
 
 class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
@@ -104,7 +104,7 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
                     list[1] = LocalNativeAdData(
                         adData.title,
                         adData.advertiserName,
-                        adData.imgIcon,
+                        adData.imgIcon.uri.toString(),
                         trekAd,
                         adData
                     )
@@ -114,7 +114,7 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
                         LocalNativeAdData(
                             adData.title,
                             adData.advertiserName,
-                            adData.imgIcon,
+                            adData.imgIcon.uri.toString(),
                             trekAd,
                             adData
                         )
@@ -156,7 +156,7 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
                     list[8] = LocalNativeAdData(
                         adData.title,
                         adData.advertiserName,
-                        adData.imgIcon,
+                        adData.imgIcon.uri.toString(),
                         trekAd2,
                         adData
                     )
@@ -166,7 +166,7 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
                         LocalNativeAdData(
                             adData.title,
                             adData.advertiserName,
-                            adData.imgIcon,
+                            adData.imgIcon.uri.toString(),
                             trekAd2,
                             adData
                         )

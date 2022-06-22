@@ -1,4 +1,4 @@
-package com.aotter.trek.android.kotlin.demo.trek.native_ad
+package com.aotter.trek.android.kotlin.demo.trek.demo.trek.native_ad
 
 import android.os.Bundle
 import android.util.Log
@@ -81,7 +81,7 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
                 viewBinding.adTitle10.text = adData.title
 
                 Glide.with(this@TrekNativeAdScrollPageActivity)
-                    .load(adData.imgIcon)
+                    .load(adData.imgIcon.drawable)
                     .into(viewBinding.adImg10)
 
                 Log.e("onAdLoaded", "onAdLoaded")
@@ -122,7 +122,7 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
                 viewBinding.adTitle2.text = adData.title
 
                 Glide.with(this@TrekNativeAdScrollPageActivity)
-                    .load(adData.imgIcon)
+                    .load(adData.imgIcon.drawable)
                     .into(viewBinding.adImg2)
 
                 Log.e("onAdLoaded", "onAdLoaded")

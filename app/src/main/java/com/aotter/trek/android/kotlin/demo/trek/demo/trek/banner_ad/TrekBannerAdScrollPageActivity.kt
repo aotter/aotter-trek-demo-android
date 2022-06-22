@@ -1,4 +1,4 @@
-package com.aotter.trek.android.kotlin.demo.trek.banner_ad
+package com.aotter.trek.android.kotlin.demo.trek.demo.trek.banner_ad
 
 import android.os.Bundle
 import android.util.Log

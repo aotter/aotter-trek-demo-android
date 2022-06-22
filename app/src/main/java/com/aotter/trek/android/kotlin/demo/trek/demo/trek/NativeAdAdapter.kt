@@ -1,4 +1,4 @@
-package com.aotter.trek.android.kotlin.demo.trek
+package com.aotter.trek.android.kotlin.demo.trek.demo.trek
 
 import android.view.LayoutInflater
 import android.view.View

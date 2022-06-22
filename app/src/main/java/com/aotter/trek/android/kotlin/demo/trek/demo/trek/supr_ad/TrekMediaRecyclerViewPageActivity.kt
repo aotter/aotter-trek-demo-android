@@ -1,4 +1,4 @@
-package com.aotter.trek.android.kotlin.demo.trek.supr_ad
+package com.aotter.trek.android.kotlin.demo.trek.demo.trek.supr_ad
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,10 +10,10 @@ import com.aotter.net.trek.AotterTrek
 import com.aotter.net.trek.ads.TrekAd
 import com.aotter.net.trek.ads.TrekAdListener
 import com.aotter.net.trek.ads.TrekAdRequest
-import com.aotter.trek.android.kotlin.demo.trek.CoverPageActivity
-import com.aotter.trek.android.kotlin.demo.trek.LocalSuprAdData
-import com.aotter.trek.android.kotlin.demo.trek.SuprAdAdapter
 import com.aotter.trek.demo.databinding.ActivityVastRecyclerViewPageBinding
+import com.aotter.trek.android.kotlin.demo.trek.demo.trek.CoverPageActivity
+import com.aotter.trek.android.kotlin.demo.trek.demo.trek.LocalSuprAdData
+import com.aotter.trek.android.kotlin.demo.trek.demo.trek.SuprAdAdapter
 
 class TrekMediaRecyclerViewPageActivity : AppCompatActivity() {
 
