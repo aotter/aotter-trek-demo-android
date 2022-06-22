@@ -7,6 +7,7 @@ https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-s
 ## Trek SDK release change log
 - 2022/06/22 release - SDK `4.5.0` (Recommend)
      - new TrekNativeAdImage 
+     - Support vertical slide
      - Open browser with chrome
      - imp tool optimization
      - TrekMediaView optimization
