@@ -7,8 +7,8 @@ https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-s
 ## Trek SDK release change log
 - 2022/06/22 release - SDK `4.6.1` (Recommend)
      - New Sensor
-     -  `AdLoader` instead of `TrekAd`
-     - The `AdLoader.loadAds()` method sends a request for multiple ads (up to 5)
+     -  `TrekAdLoader` instead of `TrekAd`
+     - The `TrekAdLoader.loadAds()` method sends a request for multiple ads (up to 5)
      - `TrekNativeAd` instead of `AdData`
      - `TrekAds.initialize() method` instead of  `AotterService.initialize() method`
      - `TrekBannerAdView` instead of `TrekBannerView `
