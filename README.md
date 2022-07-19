@@ -5,7 +5,17 @@ Trek SDK Example App Demo
 https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-sdk
 
 ## Trek SDK release change log
-- 2022/06/22 release - SDK `4.5.0` (Recommend)
+- 2022/06/22 release - SDK `4.6.1` (Recommend)
+     - `AdLoader` instead of `TrekAd`
+     - `TrekNativeAd` instead of `AdData`
+     - `TrekAds.initialize() method` instead of  `AotterService.initialize() method`
+     - `TrekBannerAdView` instead of `TrekBannerView `
+     -  New `TrekAdViewBinder` object (Using the object register ad layout)
+     - `TrekJsonObject` instead of `JsonObject`
+     - Kotlinx-serialization instead of Gson
+     - Updating ExoPlayer version to `2.17.1`
+     - Updating Kotlin version to `1.6.21`
+- 2022/06/22 release - SDK `4.5.0`
      - new TrekNativeAdImage 
      - Support vertical slide
      - Open browser with chrome
@@ -61,6 +71,8 @@ https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-s
     - Optimize adData
     - Adjust TrekMediaView lifecycle
 ## Demo release change log
+- 2022/07/19
+    - update sample code
 - 2022/04/15
     - update sample code
 - 2022/03/28
