@@ -4,26 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aotter.trek.android.kotlin.demo.trek.banner_ad.TrekBannerAdScrollPageActivity">
+    tools:context=".trek.banner_ad.TrekBannerAdScrollPageActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container"
+
+    <Button
+        android:id="@+id/reFreshBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="reFreshBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.aotter.net.trek.ads.TrekBannerAdView
+        android:id="@+id/trekBannerAdView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <com.aotter.net.trek.ads.TrekBannerView
-            android:id="@+id/trekBannerView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.aotter.net.trek.ads.TrekBannerAdView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

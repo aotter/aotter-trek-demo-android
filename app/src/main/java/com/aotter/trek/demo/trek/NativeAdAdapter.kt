@@ -1,4 +1,4 @@
-package com.aotter.trek.android.kotlin.demo.trek.demo.trek
+package com.aotter.trek.demo.trek
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.aotter.net.trek.ads.ad_view_binding.TrekAdViewBinder
 import com.aotter.trek.demo.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -24,7 +25,7 @@ class NativeAdAdapter() : RecyclerView.Adapter<NativeAdAdapter.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
 
-        return list[position].trekAd?.let {
+        return list[position].trekNativeAd?.let {
             0
         } ?: kotlin.run {
             1
@@ -72,10 +73,12 @@ class NativeAdAdapter() : RecyclerView.Adapter<NativeAdAdapter.ViewHolder>() {
 
         fun bind(item: LocalNativeAdData) {
 
-            item.trekAd?.let { trekAd ->
-                item.adData?.let { adData ->
-                    trekAd.registerNativeAd(itemView, adData)
-                }
+            item.trekNativeAd?.let { trekNativeAd ->
+                TrekAdViewBinder.registerAdView(
+                    itemView,
+                    null,
+                    trekNativeAd
+                )
             }
 
             advertiser.text = item.advertiser

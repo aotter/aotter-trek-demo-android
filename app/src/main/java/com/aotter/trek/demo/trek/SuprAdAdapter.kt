@@ -1,4 +1,4 @@
-package com.aotter.trek.android.kotlin.demo.trek.demo.trek
+package com.aotter.trek.demo.trek
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.aotter.net.trek.ads.TrekMediaView
+import com.aotter.net.trek.ads.ad_view_binding.TrekAdViewBinder
 import com.aotter.trek.demo.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -26,7 +27,7 @@ class SuprAdAdapter() : RecyclerView.Adapter<SuprAdAdapter.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
 
-        return list[position].trekAd?.let {
+        return list[position].trekNativeAd?.let {
             0
         } ?: kotlin.run {
             1
@@ -76,10 +77,10 @@ class SuprAdAdapter() : RecyclerView.Adapter<SuprAdAdapter.ViewHolder>() {
 
         fun bind(item: LocalSuprAdData) {
 
-            item.trekAd?.let { trek ->
-                item.adData?.let { adData ->
-                    trek.registerSuprAd(container, trekMediaView3, adData)
-                }
+            item.trekNativeAd?.let { trekNativeAd ->
+
+                TrekAdViewBinder.registerAdView(container, trekMediaView3, trekNativeAd)
+
             } ?: kotlin.run {
 
                 adTitle.text = item.title

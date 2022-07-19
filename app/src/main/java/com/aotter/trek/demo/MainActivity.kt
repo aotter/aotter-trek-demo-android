@@ -1,15 +1,15 @@
-package com.aotter.trek.android.kotlin.demo.trek.demo
+package com.aotter.trek.demo
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.aotter.net.trek.AotterTrek
+import com.aotter.net.trek.TrekAds
 import com.aotter.trek.demo.databinding.ActivityMainBinding
-import com.aotter.trek.android.kotlin.demo.trek.demo.trek.banner_ad.TrekBannerAdScrollPageActivity
-import com.aotter.trek.android.kotlin.demo.trek.demo.trek.native_ad.TrekNativeAdRecyclerViewPageActivity
-import com.aotter.trek.android.kotlin.demo.trek.demo.trek.native_ad.TrekNativeAdScrollPageActivity
-import com.aotter.trek.android.kotlin.demo.trek.demo.trek.supr_ad.TrekMediaRecyclerViewPageActivity
-import com.aotter.trek.android.kotlin.demo.trek.demo.trek.supr_ad.TrekMediaScrollPageActivity
+import com.aotter.trek.demo.trek.banner_ad.TrekBannerAdScrollPageActivity
+import com.aotter.trek.demo.trek.native_ad.TrekNativeAdRecyclerViewPageActivity
+import com.aotter.trek.demo.trek.native_ad.TrekNativeAdScrollPageActivity
+import com.aotter.trek.demo.trek.supr_ad.TrekMediaRecyclerViewPageActivity
+import com.aotter.trek.demo.trek.supr_ad.TrekMediaScrollPageActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(viewBinding.root)
 
-        AotterTrek.initialize(
+        TrekAds.initialize(
             this,
             "DNgNhOwfbUkOqcQFI+uD"
         ) {}

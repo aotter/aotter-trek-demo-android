@@ -1,4 +1,4 @@
-package com.aotter.trek.android.kotlin.demo.trek.demo
+package com.aotter.trek.demo
 
 import android.app.Application
 
