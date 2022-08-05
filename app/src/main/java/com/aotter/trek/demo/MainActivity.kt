@@ -8,8 +8,6 @@ import com.aotter.trek.demo.databinding.ActivityMainBinding
 import com.aotter.trek.demo.trek.banner_ad.TrekBannerAdScrollPageActivity
 import com.aotter.trek.demo.trek.native_ad.TrekNativeAdRecyclerViewPageActivity
 import com.aotter.trek.demo.trek.native_ad.TrekNativeAdScrollPageActivity
-import com.aotter.trek.demo.trek.supr_ad.TrekMediaRecyclerViewPageActivity
-import com.aotter.trek.demo.trek.supr_ad.TrekMediaScrollPageActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initView() {
 
-        viewBinding.trekNativeAdRecyclerViewBtn.setOnClickListener {
+        viewBinding.nativeAdRecyclerViewBtn.setOnClickListener {
 
             val intent = Intent()
             intent.setClass(this, TrekNativeAdRecyclerViewPageActivity::class.java)
@@ -42,26 +40,14 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        viewBinding.trekNativeAdScrollPageBtn.setOnClickListener {
+        viewBinding.nativeAdScrollPageBtn.setOnClickListener {
             val intent = Intent()
             intent.setClass(this, TrekNativeAdScrollPageActivity::class.java)
             startActivity(intent)
         }
 
-        viewBinding.trekMediaAdScrollPageAdBtn.setOnClickListener {
-            val intent = Intent()
-            intent.setClass(this, TrekMediaScrollPageActivity::class.java)
-            startActivity(intent)
-        }
 
-        viewBinding.trekMediaAdRecyclerViewAdBtn.setOnClickListener {
-            val intent = Intent()
-            intent.setClass(this, TrekMediaRecyclerViewPageActivity::class.java)
-            startActivity(intent)
-        }
-
-
-        viewBinding.trekBannerAdScrollPageAdBtn.setOnClickListener {
+        viewBinding.bannerAdScrollPageBtn.setOnClickListener {
             val intent = Intent()
             intent.setClass(this, TrekBannerAdScrollPageActivity::class.java)
             startActivity(intent)

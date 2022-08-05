@@ -15,34 +15,42 @@ import com.aotter.net.trek.ads.ad_view_binding.TrekAdViewBinder
 import com.aotter.net.trek.sealed.ActionType
 import com.aotter.net.trek.sealed.EntityType
 import com.aotter.net.trek.tracker.Tracker
-import com.aotter.trek.demo.databinding.ActivityNativeAdScrollPageBinding
+import com.aotter.trek.demo.databinding.ActivityNativeAdScrollViewBinding
+import com.aotter.trek.demo.databinding.ItemStyle1Binding
+import com.aotter.trek.demo.databinding.ItemStyle2Binding
+import com.aotter.trek.demo.databinding.ItemStyle3Binding
 import com.bumptech.glide.Glide
-
 
 class TrekNativeAdScrollPageActivity : AppCompatActivity() {
 
-    private val TAG = TrekNativeAdScrollPageActivity::class.java.simpleName
+    private lateinit var viewBinding: ActivityNativeAdScrollViewBinding
 
-    private lateinit var viewBinding: ActivityNativeAdScrollPageBinding
+    private var trekAdLoader: TrekAdLoader? = null
 
-    private lateinit var trekAdLoader: TrekAdLoader
+    private var trekAdRequest: TrekAdRequest? = null
 
-    private lateinit var trekAdLoader2: TrekAdLoader
+    private var trekAdLoader2: TrekAdLoader? = null
 
-    private val trekAdRequest = TrekAdRequest.Builder()
-        .setCategory("news")
-        .setContentUrl("https://agirls.aotter.net/")
-        .setContentTitle("電獺少女")
-        .build()
+    private var trekAdRequest2: TrekAdRequest? = null
+
+    private var trekAdLoader3: TrekAdLoader? = null
+
+    private var trekAdRequest3: TrekAdRequest? = null
+
+    private var adView: ItemStyle1Binding? = null
+
+    private var adView2: ItemStyle2Binding? = null
+
+    private var adView3: ItemStyle3Binding? = null
+
+    private val tracker = Tracker(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewBinding = ActivityNativeAdScrollPageBinding.inflate(layoutInflater)
+        viewBinding = ActivityNativeAdScrollViewBinding.inflate(layoutInflater)
 
         setContentView(viewBinding.root)
-
-        initView()
 
         initTracker()
 
@@ -50,113 +58,191 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
 
         getAd2()
 
+        getAd3()
+
     }
 
-    private fun initView() {
+    private fun getAd() {
 
-        viewBinding.refreshBtn.setOnClickListener {
+        trekAdLoader = TrekAdLoader
+            .Builder(this, "81608f91-8b2b-4f8f-86a1-539a1959f836")
+            .withAdListener(object : TrekAdListener {
+                override fun onAdFailedToLoad(message: String) {
+                    super.onAdFailedToLoad(message)
 
-            TrekAdViewBinder.destroyAll()
+                }
 
-            trekAdLoader.loadAd(trekAdRequest)
+                override fun onAdLoaded(trekNativeAd: TrekNativeAd) {
+                    super.onAdLoaded(trekNativeAd)
 
-            trekAdLoader2.loadAd(trekAdRequest)
 
+                    if (!isDestroyed) {
+
+                        adView = ItemStyle1Binding.bind(viewBinding.viewStub.inflate()).apply {
+
+                            advertiser.text = trekNativeAd.advertiserName
+
+                            adBody.text = trekNativeAd.text
+
+                            TrekAdViewBinder.registerAdView(root, trekMediaView, trekNativeAd)
+
+                        }
+
+                    }
+
+                }
+
+                override fun onAdClicked() {
+                    super.onAdClicked()
+
+                    Log.e("onAdClicked", "onAdClicked")
+
+                }
+
+                override fun onAdImpression() {
+                    super.onAdImpression()
+
+                    Log.e("onAdImpression", "onAdImpression")
+
+                }
+            })
+            .build()
+
+        trekAdRequest = TrekAdRequest.Builder()
+            .setCategory("NEWS")
+            .setContentUrl("https://agirls.aotter.net/")
+            .setContentTitle("電獺少女")
+            .build()
+
+        trekAdRequest?.let {
+            trekAdLoader?.loadAd(it)
         }
 
     }
 
     private fun getAd2() {
 
-        trekAdLoader =
-            TrekAdLoader.Builder(this, "45419fb5-a846-4c4a-837f-3b391ec7b45a")
-                .withAdListener(object : TrekAdListener {
-                    override fun onAdFailedToLoad(message: String) {
-                        Log.e(TAG, "trekAdLoader : $message")
-                    }
+        trekAdLoader2 = TrekAdLoader
+            .Builder(this, "45419fb5-a846-4c4a-837f-3b391ec7b45a")
+            .withAdListener(object : TrekAdListener {
+                override fun onAdFailedToLoad(message: String) {
+                    super.onAdFailedToLoad(message)
 
-                    override fun onAdLoaded(trekNativeAd: TrekNativeAd) {
+                }
 
-                        viewBinding.advertiser10.text = trekNativeAd.advertiserName
+                override fun onAdLoaded(trekNativeAd: TrekNativeAd) {
+                    super.onAdLoaded(trekNativeAd)
 
-                        viewBinding.adTitle10.text = trekNativeAd.title
+                    if (!isDestroyed) {
 
-                        Glide.with(this@TrekNativeAdScrollPageActivity)
-                            .load(trekNativeAd.imgIcon.drawable)
-                            .into(viewBinding.adImg10)
+                        adView2 = ItemStyle2Binding.bind(viewBinding.viewStub2.inflate()).apply {
 
-                        TrekAdViewBinder.registerAdView(
-                            viewBinding.nativeViewTen,
-                            null,
-                            trekNativeAd
-                        )
+                            advertiser.text = trekNativeAd.advertiserName
 
-                    }
+                            adBody.text = trekNativeAd.text
 
-                    override fun onAdClicked() {
-                        Log.e(TAG, "trekAdLoader : Ad Clicked success.")
-                    }
+                            Glide.with(this@TrekNativeAdScrollPageActivity)
+                                .load(trekNativeAd.imgMain.drawable)
+                                .into(adImg)
 
-                    override fun onAdImpression() {
-
-                        Log.e(TAG, "trekAdLoader : AD Impression success.")
+                            TrekAdViewBinder.registerAdView(root, null, trekNativeAd)
+                        }
 
                     }
 
-                })
-                .build()
+                }
 
-        trekAdLoader.loadAd(trekAdRequest)
+                override fun onAdClicked() {
+                    super.onAdClicked()
+
+                    Log.e("onAdClicked", "onAdClicked")
+
+                }
+
+                override fun onAdImpression() {
+                    super.onAdImpression()
+
+                    Log.e("onAdImpression", "onAdImpression")
+
+                }
+            })
+            .build()
+
+        trekAdRequest2 = TrekAdRequest.Builder()
+            .setCategory("NEWS")
+            .setContentUrl("https://agirls.aotter.net/")
+            .setContentTitle("電獺少女")
+            .build()
+
+        trekAdRequest2?.let {
+            trekAdLoader2?.loadAd(it)
+        }
 
     }
 
-    private fun getAd() {
+    private fun getAd3() {
 
-        trekAdLoader2 =
-            TrekAdLoader.Builder(this, "45419fb5-a846-4c4a-837f-3b391ec7b45a")
-                .withAdListener(object : TrekAdListener {
-                    override fun onAdFailedToLoad(message: String) {
-                        Log.e(TAG, "trekAdLoader2 : $message")
-                    }
+        trekAdLoader3 = TrekAdLoader
+            .Builder(this, "45419fb5-a846-4c4a-837f-3b391ec7b45a")
+            .withAdListener(object : TrekAdListener {
+                override fun onAdFailedToLoad(message: String) {
+                    super.onAdFailedToLoad(message)
 
-                    override fun onAdLoaded(trekNativeAd: TrekNativeAd) {
 
-                        viewBinding.advertiser2.text = trekNativeAd.advertiserName
+                }
 
-                        viewBinding.adTitle2.text = trekNativeAd.title
+                override fun onAdLoaded(trekNativeAd: TrekNativeAd) {
+                    super.onAdLoaded(trekNativeAd)
 
-                        Glide.with(this@TrekNativeAdScrollPageActivity)
-                            .load(trekNativeAd.imgIcon.drawable)
-                            .into(viewBinding.adImg2)
+                    if (!isDestroyed) {
 
-                        TrekAdViewBinder.registerAdView(
-                            viewBinding.nativeViewTwo,
-                            null,
-                            trekNativeAd
-                        )
+                        adView3 = ItemStyle3Binding.bind(viewBinding.viewStub3.inflate()).apply {
 
-                    }
+                            advertiser.text = trekNativeAd.advertiserName
 
-                    override fun onAdClicked() {
-                        Log.e(TAG, "trekAdLoader2 : Ad Clicked success.")
-                    }
+                            adBody.text = trekNativeAd.text
 
-                    override fun onAdImpression() {
+                            Glide.with(this@TrekNativeAdScrollPageActivity)
+                                .load(trekNativeAd.imgIconHd.drawable)
+                                .into(adImg)
 
-                        Log.e(TAG, "trekAdLoader2 : AD Impression success.")
+                            TrekAdViewBinder.registerAdView(root, null, trekNativeAd)
+                        }
 
                     }
 
-                })
-                .build()
 
-        trekAdLoader2.loadAd(trekAdRequest)
+                }
+
+                override fun onAdClicked() {
+                    super.onAdClicked()
+
+                    Log.e("onAdClicked", "onAdClicked")
+
+                }
+
+                override fun onAdImpression() {
+                    super.onAdImpression()
+
+                    Log.e("onAdImpression", "onAdImpression")
+
+                }
+            })
+            .build()
+
+        trekAdRequest3 = TrekAdRequest.Builder()
+            .setCategory("NEWS")
+            .setContentUrl("https://agirls.aotter.net/")
+            .setContentTitle("電獺少女")
+            .build()
+
+        trekAdRequest3?.let {
+            trekAdLoader3?.loadAd(it)
+        }
 
     }
 
     private fun initTracker() {
-
-        val tracker = Tracker(this)
 
         val jsonObject = TrekJsonObject()
 
@@ -177,7 +263,10 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
             jsonObject,
         )
 
-        val user = User("1991/10/10", "a1111111@gmail.com", "", "M", "0900000000", TrekJsonObject())
+        val user = User(
+            "1991/10/10", "a1111111@gmail.com", "", "M", "0900000000",
+            TrekJsonObject()
+        )
 
         tracker
             .timeSpan(1)
@@ -187,13 +276,5 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
             .sendTrackerReport()
 
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        TrekAdViewBinder.destroyAll()
-
-    }
-
 
 }

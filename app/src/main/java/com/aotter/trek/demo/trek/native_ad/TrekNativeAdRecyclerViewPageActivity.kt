@@ -2,74 +2,67 @@ package com.aotter.trek.demo.trek.native_ad
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.aotter.net.dto.Entity
-import com.aotter.net.dto.Location
-import com.aotter.net.dto.TrekJsonObject
-import com.aotter.net.dto.User
 import com.aotter.net.dto.trek.response.TrekNativeAd
 import com.aotter.net.trek.ads.TrekAdListener
 import com.aotter.net.trek.ads.TrekAdLoader
 import com.aotter.net.trek.ads.TrekAdRequest
 import com.aotter.net.trek.ads.ad_view_binding.TrekAdViewBinder
-import com.aotter.net.trek.annomation.EntityType
-import com.aotter.net.trek.sealed.ActionType
-import com.aotter.net.trek.tracker.Tracker
-import com.aotter.trek.demo.databinding.ActivityNativeAdRecyclerviewPageBinding
+import com.aotter.trek.admob.mediation.demo.ItemCallback
+import com.aotter.trek.demo.R
+import com.aotter.trek.demo.databinding.ActivityNativeAdRecyclerviewViewBinding
+import com.aotter.trek.demo.databinding.ItemNativeAdBinding
 import com.aotter.trek.demo.trek.LocalNativeAdData
 import com.aotter.trek.demo.trek.NativeAdAdapter
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
 
-    private val TAG = TrekNativeAdScrollPageActivity::class.java.simpleName
+    private lateinit var viewBinding: ActivityNativeAdRecyclerviewViewBinding
 
-    private lateinit var viewBinding: ActivityNativeAdRecyclerviewPageBinding
+    private var nativeAdAdapter = NativeAdAdapter(ItemCallback())
 
-    private lateinit var trekAdLoader: TrekAdLoader
+    private var trekAdLoader: TrekAdLoader? = null
 
-    private lateinit var trekAdLoader2: TrekAdLoader
+    private var trekAdRequest: TrekAdRequest? = null
 
-    private val trekAdRequest = TrekAdRequest.Builder()
-        .setCategory("news")
-        .setContentUrl("https://agirls.aotter.net/")
-        .setContentTitle("電獺少女")
-        .build()
+    private var trekAdLoader2: TrekAdLoader? = null
 
-    private lateinit var nativeAdAdapter: NativeAdAdapter
+    private var trekAdRequest2: TrekAdRequest? = null
 
     private var list: MutableList<LocalNativeAdData> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewBinding = ActivityNativeAdRecyclerviewPageBinding.inflate(layoutInflater)
+        viewBinding = ActivityNativeAdRecyclerviewViewBinding.inflate(layoutInflater)
 
         setContentView(viewBinding.root)
 
         initView()
 
-        initTracker()
-
-        getAd()
+        initRecyclerView()
 
     }
-
 
     private fun initView() {
 
         viewBinding.refreshBtn.setOnClickListener {
 
-            TrekAdViewBinder.destroyAll()
-
-            trekAdLoader.loadAd(trekAdRequest)
-
-            trekAdLoader2.loadAd(trekAdRequest)
+            nativeAdAdapter.submitList(null) {
+                initRecyclerView()
+            }
 
         }
 
+    }
 
-        nativeAdAdapter = NativeAdAdapter()
+
+    private fun initRecyclerView() {
 
         val linearLayoutManager = LinearLayoutManager(this)
 
@@ -79,154 +72,163 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
 
         viewBinding.nativeAdRecyclerView.adapter = nativeAdAdapter
 
-        repeat(10) {
+        list = mutableListOf<LocalNativeAdData>()
+
+        repeat(12) {
+
+            val data = LocalNativeAdData()
+
+            data.postId = data.hashCode()
+
             list.add(
-                LocalNativeAdData(
-                    "幸運調色盤：12星座明天穿什麼？（6/6-6/12）",
-                    "電獺少女",
-                    "http://pnn.aotter.net/Media/show/d8404d54-aab7-4729-8e85-64fb6b92a84e.jpg"
-                )
+                data
             )
+
         }
 
-        nativeAdAdapter.update(list)
+        nativeAdAdapter.submitList(list.toList()) {
+            getAd()
+        }
 
 
     }
 
     private fun getAd() {
 
-        trekAdLoader =
-            TrekAdLoader.Builder(this, "45419fb5-a846-4c4a-837f-3b391ec7b45a")
-                .withAdListener(object : TrekAdListener {
-                    override fun onAdFailedToLoad(message: String) {
-                        Log.e(TAG, "trekAdLoader2 : $message")
-                    }
+        trekAdLoader = TrekAdLoader
+            .Builder(this, "45419fb5-a846-4c4a-837f-3b391ec7b45a")
+            .withAdListener(object : TrekAdListener {
+                override fun onAdFailedToLoad(message: String) {
+                    super.onAdFailedToLoad(message)
 
-                    override fun onAdLoaded(trekNativeAd: TrekNativeAd) {
+                }
 
-                        list[1].trekNativeAd?.let {
-                            list[1] = LocalNativeAdData(
-                                trekNativeAd.title,
-                                trekNativeAd.advertiserName,
-                                trekNativeAd.imgIcon.uri.toString(),
-                                trekNativeAd
-                            )
-                        } ?: kotlin.run {
-                            list.add(
-                                1,
-                                LocalNativeAdData(
-                                    trekNativeAd.title,
-                                    trekNativeAd.advertiserName,
-                                    trekNativeAd.imgIcon.uri.toString(),
-                                    trekNativeAd
-                                )
-                            )
+                override fun onAdLoaded(trekNativeAd: TrekNativeAd) {
+                    super.onAdLoaded(trekNativeAd)
+
+                    if (!isDestroyed) {
+
+                        val data = LocalNativeAdData()
+
+                        data.postId = trekNativeAd.hashCode()
+
+                        data.adView = createAdView(trekNativeAd)
+
+                        list.add(4, data)
+
+                        nativeAdAdapter.submitList(list.toList()) {
+
+                            getAd2()
+
                         }
 
-                        getAd2()
-
-
                     }
 
-                    override fun onAdClicked() {
-                        Log.e(TAG, "trekAdLoader2 : Ad Clicked success.")
-                    }
+                }
 
-                    override fun onAdImpression() {
+                override fun onAdClicked() {
+                    super.onAdClicked()
 
-                        Log.e(TAG, "trekAdLoader2 : AD Impression success.")
+                    Log.e("onAdClicked", "onAdClicked")
 
-                    }
+                }
 
-                })
-                .build()
+                override fun onAdImpression() {
+                    super.onAdImpression()
 
-        trekAdLoader.loadAd(trekAdRequest)
+                    Log.e("onAdImpression", "onAdImpression")
+
+                }
+            })
+            .build()
+
+        trekAdRequest = TrekAdRequest.Builder()
+            .setCategory("NEWS")
+            .setContentUrl("https://agirls.aotter.net/")
+            .setContentTitle("電獺少女")
+            .build()
+
+        trekAdRequest?.let {
+            trekAdLoader?.loadAd(it)
+        }
 
     }
 
     private fun getAd2() {
 
-        trekAdLoader2 =
-            TrekAdLoader.Builder(this, "45419fb5-a846-4c4a-837f-3b391ec7b45a")
-                .withAdListener(object : TrekAdListener {
-                    override fun onAdFailedToLoad(message: String) {
-                        Log.e(TAG, "trekAdLoader2 : $message")
-                    }
+        trekAdLoader2 = TrekAdLoader
+            .Builder(this, "81608f91-8b2b-4f8f-86a1-539a1959f836")
+            .withAdListener(object : TrekAdListener {
+                override fun onAdFailedToLoad(message: String) {
+                    super.onAdFailedToLoad(message)
 
-                    override fun onAdLoaded(trekNativeAd: TrekNativeAd) {
+                }
 
-                        list[8].trekNativeAd?.let {
-                            list[8] = LocalNativeAdData(
-                                trekNativeAd.title,
-                                trekNativeAd.advertiserName,
-                                trekNativeAd.imgIcon.uri.toString(),
-                                trekNativeAd
-                            )
-                        } ?: kotlin.run {
-                            list.add(
-                                8,
-                                LocalNativeAdData(
-                                    trekNativeAd.title,
-                                    trekNativeAd.advertiserName,
-                                    trekNativeAd.imgIcon.uri.toString(),
-                                    trekNativeAd
-                                )
-                            )
-                        }
+                override fun onAdLoaded(trekNativeAd: TrekNativeAd) {
+                    super.onAdLoaded(trekNativeAd)
+                    if (!isDestroyed) {
 
-                        nativeAdAdapter.update(list)
+                        val data = LocalNativeAdData()
 
+                        data.postId = trekNativeAd.hashCode()
+
+                        data.adView = createAdView(trekNativeAd)
+
+                        list.add(8, data)
+
+                        nativeAdAdapter.submitList(list.toList())
 
                     }
 
-                    override fun onAdClicked() {
-                        Log.e(TAG, "trekAdLoader2 : Ad Clicked success.")
-                    }
+                }
 
-                    override fun onAdImpression() {
+                override fun onAdClicked() {
+                    super.onAdClicked()
 
-                        Log.e(TAG, "trekAdLoader2 : AD Impression success.")
+                    Log.e("onAdClicked", "onAdClicked")
 
-                    }
+                }
 
-                })
-                .build()
+                override fun onAdImpression() {
+                    super.onAdImpression()
 
-        trekAdLoader2.loadAd(trekAdRequest)
+                    Log.e("onAdImpression", "onAdImpression")
+
+                }
+            })
+            .build()
+
+        trekAdRequest2 = TrekAdRequest.Builder()
+            .setCategory("NEWS")
+            .setContentUrl("https://agirls.aotter.net/")
+            .setContentTitle("電獺少女")
+            .build()
+
+        trekAdRequest2?.let {
+            trekAdLoader2?.loadAd(it)
+        }
 
     }
 
-    private fun initTracker() {
+    private fun createAdView(trekNativeAd: TrekNativeAd): View {
 
-        val tracker = Tracker(this)
-
-        val entity = Entity(
-            "anthony", "anthony", EntityType.PLACE, "anthony", listOf("炸雞"),
-            listOf(
-                "News",
-                "News_domestic"
-            ),
-            TrekJsonObject(),
+        val adView = ItemNativeAdBinding.bind(
+            LayoutInflater.from(this@TrekNativeAdRecyclerViewPageActivity)
+                .inflate(R.layout.item_native_ad, null)
         )
 
-        val user = User()
+        adView.advertiser.text = trekNativeAd.advertiserName
 
-        tracker
-            .timeSpan(1)
-            .setEntity(entity)
-            .setUser(user)
-            .setLocation(Location())
-            .setActionType(ActionType.READ_POST)
-            .sendTrackerReport()
+        adView.adBody.text = trekNativeAd.text
 
-    }
+        Glide.with(this@TrekNativeAdRecyclerViewPageActivity)
+            .load(trekNativeAd.imgIconHd.drawable)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(adView.adImg)
 
-    override fun onDestroy() {
-        super.onDestroy()
+        TrekAdViewBinder.registerAdView(adView.root, adView.trekMediaView, trekNativeAd)
 
-        TrekAdViewBinder.destroyAll()
+        return adView.root
 
     }
 

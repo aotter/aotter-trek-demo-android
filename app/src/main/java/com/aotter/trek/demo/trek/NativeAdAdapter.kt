@@ -5,43 +5,34 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.aotter.net.trek.ads.ad_view_binding.TrekAdViewBinder
+import com.aotter.trek.admob.mediation.demo.ItemCallback
 import com.aotter.trek.demo.R
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
-class NativeAdAdapter() : RecyclerView.Adapter<NativeAdAdapter.ViewHolder>() {
-
-    private var list = mutableListOf<LocalNativeAdData>()
-
-    fun update(list: MutableList<LocalNativeAdData>) {
-
-        this.list = list
-
-        notifyDataSetChanged()
-
-    }
+class NativeAdAdapter(
+    diffCallBack: ItemCallback
+) :
+    ListAdapter<LocalNativeAdData, RecyclerView.ViewHolder>(diffCallBack) {
 
     override fun getItemViewType(position: Int): Int {
-
-        return list[position].trekNativeAd?.let {
+        return getItem(position).adView?.let {
             0
         } ?: kotlin.run {
             1
         }
-
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
         return when (viewType) {
             0 -> {
 
                 val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_native_ad, parent, false)
+                    .inflate(R.layout.item_conteainer_native_ad, parent, false)
 
-                ViewHolder(view)
+                AdViewHolder(view)
 
             }
             1 -> ViewHolder(
@@ -53,45 +44,59 @@ class NativeAdAdapter() : RecyclerView.Adapter<NativeAdAdapter.ViewHolder>() {
         }
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is NativeAdAdapter.AdViewHolder) {
+            holder.bind(getItem(position))
+        }
 
-        holder.bind(list[position])
-
-    }
-
-    override fun getItemCount(): Int {
-        return list.count()
+        if (holder is ViewHolder) {
+            holder.bind(getItem(position))
+        }
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val adTitle = itemView.findViewById<TextView>(R.id.adTitle)
-
-        private val adImg = itemView.findViewById<ImageView>(R.id.adImg)
+        private val adTitle = itemView.findViewById<TextView>(R.id.adBody)
 
         private val advertiser = itemView.findViewById<TextView>(R.id.advertiser)
 
-        fun bind(item: LocalNativeAdData) {
+        private val adImg = itemView.findViewById<ImageView>(R.id.adImg)
 
-            item.trekNativeAd?.let { trekNativeAd ->
-                TrekAdViewBinder.registerAdView(
-                    itemView,
-                    null,
-                    trekNativeAd
-                )
-            }
+        fun bind(item: LocalNativeAdData) {
 
             advertiser.text = item.advertiser
 
             adTitle.text = item.title
 
-            Glide.with(itemView.context)
-                .load(item.img)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(adImg)
+            adImg.setImageResource(R.drawable.aotter_girl)
 
         }
 
     }
+
+
+    inner class AdViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        private val container = itemView.findViewById<CardView>(R.id.container)
+
+        fun bind(item: LocalNativeAdData) {
+
+            (item.adView?.parent as? ViewGroup)?.removeAllViews()
+
+            container.removeAllViews()
+
+            val lp = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+
+            item.adView?.layoutParams = lp
+
+            container.addView(item.adView)
+
+        }
+
+    }
+
 
 }

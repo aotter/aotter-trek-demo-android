@@ -6,18 +6,18 @@ import androidx.appcompat.app.AppCompatActivity
 import com.aotter.net.dto.trek.response.TrekNativeAd
 import com.aotter.net.trek.ads.TrekAdListener
 import com.aotter.net.trek.ads.TrekAdRequest
-import com.aotter.trek.demo.databinding.ActivityBannerAdScrollPageBinding
+import com.aotter.trek.demo.databinding.ActivityBannerAdScrollViewBinding
 
 class TrekBannerAdScrollPageActivity : AppCompatActivity() {
 
-    private lateinit var viewBinding: ActivityBannerAdScrollPageBinding
+    private lateinit var viewBinding: ActivityBannerAdScrollViewBinding
 
     private var trekAdRequest: TrekAdRequest? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewBinding = ActivityBannerAdScrollPageBinding.inflate(layoutInflater)
+        viewBinding = ActivityBannerAdScrollViewBinding.inflate(layoutInflater)
 
         setContentView(viewBinding.root)
 
@@ -29,7 +29,7 @@ class TrekBannerAdScrollPageActivity : AppCompatActivity() {
 
     private fun initView() {
 
-        viewBinding.reFreshBtn.setOnClickListener {
+        viewBinding.refreshBtn.setOnClickListener {
 
             trekAdRequest?.let {
                 viewBinding.trekBannerAdView.loadAd(it)
