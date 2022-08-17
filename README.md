@@ -18,8 +18,6 @@ https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-s
    - **After version 4.7.2 , we had been changed mediation custom class path**
      -  Native Ad :  `com.aotter.trek.admob.mediation.ads.TrekAdmobCustomEventNative`
      -  Banner Ad : `com.aotter.trek.admob.mediation.ads.TrekAdmobCustomEventBanner`
-   - Support Gam mediation
-   - Support Max mediation
 - 2022/06/22 release - SDK `4.6.1`
      - New Sensor
      -  `TrekAdLoader` instead of `TrekAd`
