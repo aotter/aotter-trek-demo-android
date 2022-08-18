@@ -11,7 +11,7 @@ import com.aotter.net.trek.ads.TrekAdListener
 import com.aotter.net.trek.ads.TrekAdLoader
 import com.aotter.net.trek.ads.TrekAdRequest
 import com.aotter.net.trek.ads.ad_view_binding.TrekAdViewBinder
-import com.aotter.trek.admob.mediation.demo.ItemCallback
+import com.aotter.trek.demo.trek.ItemCallback
 import com.aotter.trek.demo.R
 import com.aotter.trek.demo.databinding.ActivityNativeAdRecyclerviewViewBinding
 import com.aotter.trek.demo.databinding.ItemNativeAdBinding

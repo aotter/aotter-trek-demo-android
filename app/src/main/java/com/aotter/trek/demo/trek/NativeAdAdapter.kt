@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.aotter.trek.admob.mediation.demo.ItemCallback
 import com.aotter.trek.demo.R
 
 class NativeAdAdapter(

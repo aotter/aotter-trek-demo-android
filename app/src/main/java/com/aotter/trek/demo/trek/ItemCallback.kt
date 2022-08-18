@@ -1,4 +1,4 @@
-package com.aotter.trek.admob.mediation.demo
+package com.aotter.trek.demo.trek
 
 import androidx.recyclerview.widget.DiffUtil
 import com.aotter.trek.demo.trek.LocalNativeAdData
