@@ -5,7 +5,10 @@ Trek SDK Example App Demo
 https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-sdk
 
 ## Trek SDK release change log
-- 2022/08/04 release - SDK `4.7.2` (Recommend)
+- 2022/10/03 release - Mediation `4.8.0` (Recommend)
+  - Support new ad format of VAST XML & HTML 5
+  - Log optimization
+- 2022/08/04 release - SDK `4.7.2`
   - TrekBannerAdView new feature
     - preload
     - auto refresh
@@ -90,6 +93,8 @@ https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-s
     - Optimize adData
     - Adjust TrekMediaView lifecycle
 ## Demo release change log
+- 2022/10/03
+    - update sample code
 - 2022/07/19
     - update sample code
 - 2022/04/15
