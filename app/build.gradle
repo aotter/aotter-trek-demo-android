@@ -52,7 +52,7 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
 
-    implementation 'com.aotter.android:trek-ads:4.7.2'
+    implementation 'com.aotter.android:trek-ads:4.8.0'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.7.0'

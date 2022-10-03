@@ -112,7 +112,7 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
 
                         data.postId = trekNativeAd.hashCode()
 
-                        data.adView = createAdView(trekNativeAd)
+                        data.adView = createAdView(trekNativeAd, false)
 
                         list.add(4, data)
 
@@ -172,7 +172,7 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
 
                         data.postId = trekNativeAd.hashCode()
 
-                        data.adView = createAdView(trekNativeAd)
+                        data.adView = createAdView(trekNativeAd, true)
 
                         list.add(8, data)
 
@@ -210,7 +210,7 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
 
     }
 
-    private fun createAdView(trekNativeAd: TrekNativeAd): View {
+    private fun createAdView(trekNativeAd: TrekNativeAd, isMedia: Boolean): View {
 
         val adView = ItemNativeAdBinding.bind(
             LayoutInflater.from(this@TrekNativeAdRecyclerViewPageActivity)
@@ -226,7 +226,13 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(adView.adImg)
 
-        TrekAdViewBinder.registerAdView(adView.root, adView.trekMediaView, trekNativeAd)
+        val mediaView = if (isMedia) {
+            adView.trekMediaView
+        } else {
+            null
+        }
+
+        TrekAdViewBinder.registerAdView(adView.root, mediaView, trekNativeAd)
 
         return adView.root
 
