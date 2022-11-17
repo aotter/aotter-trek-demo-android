@@ -5,7 +5,13 @@ Trek SDK Example App Demo
 https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-sdk
 
 ## Trek SDK release change log
-- 2022/10/03 release - Mediation `4.8.0` (Recommend)
+- 2022/10/03 release - SDK `4.8.1` (Recommend)
+  - Fix TrekMediaview play flow
+  - New TrekNativeAdView
+  - Upgrades ExoPlayer version to 2.18.1
+  - New OnInitializationCompleteListener interface
+  - Upgrades Kotlin version to 1.7.20
+- 2022/10/03 release - SDK `4.8.0`
   - Support new ad format of VAST XML & HTML 5
   - Log optimization
 - 2022/08/04 release - SDK `4.7.2`
@@ -15,16 +21,6 @@ https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-s
   - TrekNativeAd object new feature
      - `images` object provider `drawable` 、`uri`
      -  remove unnecessary parameter
-  - Breaking change:  
-     **After version 4.7.2 , we had been changed trek and mediation dependencies path**       
-        - trek : `implementation 'com.aotter.android:trek-ads:4.7.2'`     
-        - trek admob mediation : `implementation 'com.aotter.android:trek-admob-mediation:4.7.2'`   
-     **After version 4.7.2 , we had been changed mediation custom class path**    
-        - Native Ad : `com.aotter.trek.admob.mediation.ads.TrekAdmobCustomEventNative`    
-        - Banner Ad : `com.aotter.trek.admob.mediation.ads.TrekAdmobCustomEventBanner`    
-     - Detail refer [Migration Guide](https://trek.gitbook.io/aottertrek-sdk-doc/android/migration-guide)
-     - Detail refer [Trek installation](https://trek.gitbook.io/aottertrek-sdk-doc/android/sdk-integration/installation)
-     - Detail refer [Admob mediation installation](https://trek.gitbook.io/aottertrek-sdk-doc/android/admob-mediation/installation)
 - 2022/06/22 release - SDK `4.6.1`
      - New Sensor
      -  `TrekAdLoader` instead of `TrekAd`
