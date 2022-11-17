@@ -11,7 +11,6 @@ import com.aotter.net.trek.TrekDataKey
 import com.aotter.net.trek.ads.TrekAdListener
 import com.aotter.net.trek.ads.TrekAdLoader
 import com.aotter.net.trek.ads.TrekAdRequest
-import com.aotter.net.trek.ads.ad_view_binding.TrekAdViewBinder
 import com.aotter.net.trek.sealed.ActionType
 import com.aotter.net.trek.sealed.EntityType
 import com.aotter.net.trek.tracker.Tracker
@@ -84,7 +83,9 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
 
                             adBody.text = trekNativeAd.text
 
-                            TrekAdViewBinder.registerAdView(root, trekMediaView, trekNativeAd)
+                            trekNativeAdView.setTrekMediaView(trekMediaView)
+
+                            trekNativeAdView.setNativeAd(trekNativeAd)
 
                         }
 
@@ -145,7 +146,8 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
                                 .load(trekNativeAd.imgMain.drawable)
                                 .into(adImg)
 
-                            TrekAdViewBinder.registerAdView(root, null, trekNativeAd)
+                            trekNativeAdView.setNativeAd(trekNativeAd)
+
                         }
 
                     }
@@ -206,7 +208,8 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
                                 .load(trekNativeAd.imgIconHd.drawable)
                                 .into(adImg)
 
-                            TrekAdViewBinder.registerAdView(root, null, trekNativeAd)
+                            trekNativeAdView.setNativeAd(trekNativeAd)
+
                         }
 
                     }

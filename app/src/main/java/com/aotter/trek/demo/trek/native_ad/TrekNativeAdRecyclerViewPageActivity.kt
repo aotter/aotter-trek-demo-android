@@ -10,11 +10,11 @@ import com.aotter.net.dto.trek.response.TrekNativeAd
 import com.aotter.net.trek.ads.TrekAdListener
 import com.aotter.net.trek.ads.TrekAdLoader
 import com.aotter.net.trek.ads.TrekAdRequest
-import com.aotter.net.trek.ads.ad_view_binding.TrekAdViewBinder
-import com.aotter.trek.demo.trek.ItemCallback
 import com.aotter.trek.demo.R
 import com.aotter.trek.demo.databinding.ActivityNativeAdRecyclerviewViewBinding
 import com.aotter.trek.demo.databinding.ItemNativeAdBinding
+import com.aotter.trek.demo.databinding.ItemStyle3Binding
+import com.aotter.trek.demo.trek.ItemCallback
 import com.aotter.trek.demo.trek.LocalNativeAdData
 import com.aotter.trek.demo.trek.NativeAdAdapter
 import com.bumptech.glide.Glide
@@ -112,7 +112,7 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
 
                         data.postId = trekNativeAd.hashCode()
 
-                        data.adView = createAdView(trekNativeAd, false)
+                        data.adView = createAdView2(trekNativeAd)
 
                         list.add(4, data)
 
@@ -172,7 +172,7 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
 
                         data.postId = trekNativeAd.hashCode()
 
-                        data.adView = createAdView(trekNativeAd, true)
+                        data.adView = createAdView(trekNativeAd)
 
                         list.add(8, data)
 
@@ -210,7 +210,31 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
 
     }
 
-    private fun createAdView(trekNativeAd: TrekNativeAd, isMedia: Boolean): View {
+    private fun createAdView2(trekNativeAd: TrekNativeAd): View {
+
+        val adView = ItemStyle3Binding.bind(
+            LayoutInflater.from(this@TrekNativeAdRecyclerViewPageActivity)
+                .inflate(R.layout.item_style3, null)
+        )
+
+        adView.advertiser.text = trekNativeAd.advertiserName
+
+        adView.adBody.text = trekNativeAd.text
+
+        Glide.with(this@TrekNativeAdRecyclerViewPageActivity)
+            .load(trekNativeAd.imgIconHd.drawable)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(adView.adImg)
+
+        adView.trekNativeAdView.setNativeAd(trekNativeAd)
+
+        ////////
+
+        return adView.root
+
+    }
+
+    private fun createAdView(trekNativeAd: TrekNativeAd): View {
 
         val adView = ItemNativeAdBinding.bind(
             LayoutInflater.from(this@TrekNativeAdRecyclerViewPageActivity)
@@ -226,13 +250,9 @@ class TrekNativeAdRecyclerViewPageActivity : AppCompatActivity() {
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(adView.adImg)
 
-        val mediaView = if (isMedia) {
-            adView.trekMediaView
-        } else {
-            null
-        }
+        adView.trekNativeAdView.setTrekMediaView(adView.trekMediaView)
 
-        TrekAdViewBinder.registerAdView(adView.root, mediaView, trekNativeAd)
+        adView.trekNativeAdView.setNativeAd(trekNativeAd)
 
         return adView.root
 

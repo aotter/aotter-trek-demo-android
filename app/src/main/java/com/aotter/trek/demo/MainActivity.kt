@@ -22,8 +22,13 @@ class MainActivity : AppCompatActivity() {
 
         TrekAds.initialize(
             this,
-            "DNgNhOwfbUkOqcQFI+uD"
-        ) {}
+            "DNgNhOwfbUkOqcQFI+uD", object : TrekAds.OnInitializationCompleteListener {
+                override fun onInitializationComplete() {
+                    
+                }
+
+            }
+        )
 
         initView()
 

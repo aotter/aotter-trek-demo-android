@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.aotter.net.dto.trek.response.TrekNativeAd
 import com.aotter.net.trek.ads.TrekAdListener
 import com.aotter.net.trek.ads.TrekAdRequest
+import com.aotter.net.trek.sealed.RefreshTime
 import com.aotter.trek.demo.databinding.ActivityBannerAdScrollViewBinding
 
 class TrekBannerAdScrollPageActivity : AppCompatActivity() {
@@ -43,6 +44,12 @@ class TrekBannerAdScrollPageActivity : AppCompatActivity() {
     private fun getBannerAd() {
 
         viewBinding.trekBannerAdView.setPlaceUid("68856f90-83b7-4f09-98d4-7f480842cb02")
+
+        viewBinding.trekBannerAdView.preload = true
+
+        viewBinding.trekBannerAdView.autoRefresh = true
+
+        viewBinding.trekBannerAdView.refreshTime = RefreshTime.REFRESH_TIME_30000_MS
 
         viewBinding.trekBannerAdView.setAdListener(object : TrekAdListener {
             override fun onAdFailedToLoad(message: String) {
