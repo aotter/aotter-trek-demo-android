@@ -6,7 +6,7 @@ https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-s
 
 ## Trek SDK release change log
 - 2023/01/30 release - SDK `4.8.3` (Recommend)
-  - Add friendly obstrction method to publisher
+  - Add friendly obstrction method
   - Fix Mediation low in view rate  in OM SDK
   - `TrekAdViewUtils` instead of `TrekAdViewBinder`
 - 2022/10/03 release - SDK `4.8.1`
