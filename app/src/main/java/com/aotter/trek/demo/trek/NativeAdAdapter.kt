@@ -44,7 +44,7 @@ class NativeAdAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is NativeAdAdapter.AdViewHolder) {
+        if (holder is AdViewHolder) {
             holder.bind(getItem(position))
         }
 

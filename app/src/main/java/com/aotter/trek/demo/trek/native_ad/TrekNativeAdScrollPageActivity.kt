@@ -24,18 +24,6 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
 
     private lateinit var viewBinding: ActivityNativeAdScrollViewBinding
 
-    private var trekAdLoader: TrekAdLoader? = null
-
-    private var trekAdRequest: TrekAdRequest? = null
-
-    private var trekAdLoader2: TrekAdLoader? = null
-
-    private var trekAdRequest2: TrekAdRequest? = null
-
-    private var trekAdLoader3: TrekAdLoader? = null
-
-    private var trekAdRequest3: TrekAdRequest? = null
-
     private var adView: ItemStyle1Binding? = null
 
     private var adView2: ItemStyle2Binding? = null
@@ -63,17 +51,16 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
 
     private fun getAd() {
 
-        trekAdLoader = TrekAdLoader
-            .Builder(this, "81608f91-8b2b-4f8f-86a1-539a1959f836")
-            .withAdListener(object : TrekAdListener {
-                override fun onAdFailedToLoad(message: String) {
-                    super.onAdFailedToLoad(message)
+       val trekAdLoader = TrekAdLoader
+           .Builder(this, "81608f91-8b2b-4f8f-86a1-539a1959f836")
+           .withAdListener(object : TrekAdListener {
+               override fun onAdFailedToLoad(message: String) {
+                   super.onAdFailedToLoad(message)
 
-                }
+               }
 
-                override fun onAdLoaded(trekNativeAd: TrekNativeAd) {
-                    super.onAdLoaded(trekNativeAd)
-
+               override fun onAdLoaded(trekNativeAd: TrekNativeAd) {
+                   super.onAdLoaded(trekNativeAd)
 
                     if (!isDestroyed) {
 
@@ -109,21 +96,19 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
             })
             .build()
 
-        trekAdRequest = TrekAdRequest.Builder()
+        val trekAdRequest = TrekAdRequest.Builder()
             .setCategory("NEWS")
             .setContentUrl("https://agirls.aotter.net/")
             .setContentTitle("電獺少女")
             .build()
 
-        trekAdRequest?.let {
-            trekAdLoader?.loadAd(it)
-        }
+        trekAdLoader.loadAd(trekAdRequest)
 
     }
 
     private fun getAd2() {
 
-        trekAdLoader2 = TrekAdLoader
+        val trekAdLoader = TrekAdLoader
             .Builder(this, "45419fb5-a846-4c4a-837f-3b391ec7b45a")
             .withAdListener(object : TrekAdListener {
                 override fun onAdFailedToLoad(message: String) {
@@ -170,21 +155,19 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
             })
             .build()
 
-        trekAdRequest2 = TrekAdRequest.Builder()
+        val trekAdRequest = TrekAdRequest.Builder()
             .setCategory("NEWS")
             .setContentUrl("https://agirls.aotter.net/")
             .setContentTitle("電獺少女")
             .build()
 
-        trekAdRequest2?.let {
-            trekAdLoader2?.loadAd(it)
-        }
+        trekAdLoader.loadAd(trekAdRequest)
 
     }
 
     private fun getAd3() {
 
-        trekAdLoader3 = TrekAdLoader
+        val trekAdLoader = TrekAdLoader
             .Builder(this, "45419fb5-a846-4c4a-837f-3b391ec7b45a")
             .withAdListener(object : TrekAdListener {
                 override fun onAdFailedToLoad(message: String) {
@@ -214,7 +197,6 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
 
                     }
 
-
                 }
 
                 override fun onAdClicked() {
@@ -233,15 +215,13 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
             })
             .build()
 
-        trekAdRequest3 = TrekAdRequest.Builder()
+        val trekAdRequest = TrekAdRequest.Builder()
             .setCategory("NEWS")
             .setContentUrl("https://agirls.aotter.net/")
             .setContentTitle("電獺少女")
             .build()
 
-        trekAdRequest3?.let {
-            trekAdLoader3?.loadAd(it)
-        }
+        trekAdLoader.loadAd(trekAdRequest)
 
     }
 
@@ -277,6 +257,17 @@ class TrekNativeAdScrollPageActivity : AppCompatActivity() {
             .setEntity(entity)
             .setActionType(ActionType.READ_POST)
             .sendTrackerReport()
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        adView?.trekNativeAdView?.destroy()
+
+        adView2?.trekNativeAdView?.destroy()
+
+        adView3?.trekNativeAdView?.destroy()
 
     }
 
