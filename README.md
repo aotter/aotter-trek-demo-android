@@ -2,10 +2,12 @@
 Trek SDK Example App Demo
 
 ## Trek SDK Document
-https://trek.gitbook.io/aottertrek-sdk-doc/android/new-android-aottertrek-trek-sdk
+https://aotter.gitbook.io/android/andriod/guides
 
 ## Trek SDK release change log
-- 2023/01/30 release - SDK `4.8.3` (Recommend)
+- 2023/05/18 release - SDK `4.9.0`(Recommend)
+  - Resolve the issue of a low in-view rate caused by VAST obfuscation.
+- 2023/01/30 release - SDK `4.8.3`
   - Add friendly obstrction method
   - Fix Mediation low in view rate  in OM SDK
   - Replace `TrekAdViewBinder` with `TrekAdViewUtils`
